@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="16" fill="#030610"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="url(#borderGlow)" stroke-width="2"/>
+  <defs>
+    <linearGradient id="borderGlow" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3877FF"/>
+      <stop offset="0.5" stop-color="#25D9FF"/>
+      <stop offset="1" stop-color="#985CFF"/>
+    </linearGradient>
+    <linearGradient id="textGlow" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#25D9FF"/>
+    </linearGradient>
+  </defs>
+  <text x="50%" y="54%" text-anchor="middle" dominant-baseline="middle" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="900" font-size="28" fill="url(#textGlow)" letter-spacing="1">RK.</text>
+</svg>

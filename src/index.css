@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #030610;
+    --bg-surface: #080D18;
+    --bg-elevated: #0D1424;
+    --color-blue: #3877FF;
+    --color-cyan: #25D9FF;
+    --color-violet: #985CFF;
+    --color-purple: #6535FF;
+    --border-subtle: rgba(115, 140, 210, 0.22);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #030610;
+    color: #F6F8FF;
+  }
+
+  body {
+    background-color: #030610;
+    color: #F6F8FF;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(56, 119, 255, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 35%, rgba(152, 92, 255, 0.07) 0%, transparent 45%),
+      radial-gradient(circle at 50% 80%, rgba(37, 217, 255, 0.06) 0%, transparent 50%),
+      linear-gradient(to bottom, rgba(3, 6, 16, 0.98), #030610);
+    background-attachment: fixed;
+  }
+
+  /* Custom Neon Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #030610;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #0D1B36;
+    border-radius: 4px;
+    border: 1px solid rgba(56, 119, 255, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3877FF;
+    box-shadow: 0 0 10px #3877FF;
+  }
+}
+
+/* Cosmic Grid Background */
+.cosmic-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(115, 140, 210, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(115, 140, 210, 0.05) 1px, transparent 1px);
+}
+
+.cosmic-radial-glow {
+  background: radial-gradient(circle at center, rgba(56, 119, 255, 0.15) 0%, rgba(152, 92, 255, 0.05) 45%, transparent 70%);
+}
+
+/* Glow Utilities */
+.glow-text-blue {
+  text-shadow: 0 0 20px rgba(56, 119, 255, 0.6);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 20px rgba(37, 217, 255, 0.6);
+}
+
+.glow-text-violet {
+  text-shadow: 0 0 20px rgba(152, 92, 255, 0.6);
+}
+
+.glow-border {
+  border: 1px solid rgba(115, 140, 210, 0.25);
+  box-shadow: 0 0 15px -3px rgba(56, 119, 255, 0.15);
+}
+
+.glow-border-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-border-hover:hover {
+  border-color: rgba(56, 119, 255, 0.6);
+  box-shadow: 0 0 25px rgba(56, 119, 255, 0.3), inset 0 0 15px rgba(56, 119, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text-blue-cyan {
+  background: linear-gradient(135deg, #FFFFFF 0%, #3877FF 60%, #25D9FF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-cyan-violet {
+  background: linear-gradient(135deg, #25D9FF 0%, #3877FF 50%, #985CFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-title {
+  background: linear-gradient(180deg, #FFFFFF 0%, #D4E0FC 60%, #85A5E8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass Card */
+.glass-panel {
+  background: rgba(8, 13, 24, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(115, 140, 210, 0.2);
+}
+
+.glass-panel-elevated {
+  background: rgba(13, 20, 36, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(115, 140, 210, 0.28);
+}
+
+/* Orbital Rings */
+.orbit-ring {
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.orbit-ring-1 {
+  width: 320px;
+  height: 320px;
+  border: 1px dashed rgba(56, 119, 255, 0.35);
+  animation: spinSlow 30s linear infinite;
+}
+
+.orbit-ring-2 {
+  width: 375px;
+  height: 375px;
+  border: 1px solid rgba(152, 92, 255, 0.22);
+  animation: spinSlowReverse 45s linear infinite;
+}
+
+.orbit-ring-3 {
+  width: 425px;
+  height: 425px;
+  border: 1px dashed rgba(37, 217, 255, 0.2);
+  animation: spinSlow 60s linear infinite;
+}
+
+@media (min-width: 1536px) {
+  .orbit-ring-1 { width: 350px; height: 350px; }
+  .orbit-ring-2 { width: 410px; height: 410px; }
+  .orbit-ring-3 { width: 460px; height: 460px; }
+}
+
+@media (max-width: 640px) {
+  .orbit-ring-1 { width: 260px; height: 260px; }
+  .orbit-ring-2 { width: 300px; height: 300px; }
+  .orbit-ring-3 { width: 335px; height: 335px; }
+}
+
+@keyframes spinSlow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes spinSlowReverse {
+  from { transform: translate(-50%, -50%) rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* Tech Marquee Pause */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Custom 3D Tilt perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .orbit-ring-1, .orbit-ring-2, .orbit-ring-3, .animate-marquee {
+    animation: none !important;
+  }
+}
