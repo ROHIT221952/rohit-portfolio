@@ -228,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
 
                 <a
                   href={PERSONAL_INFO.resumePath}
-                  download="Rohit-Kumar-Resume.pdf"
+                  download="rohit_kumar_resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full text-center py-3 text-xs font-semibold tracking-wide text-text-secondary hover:text-white bg-surface-elevated border border-border-subtle rounded-xl"

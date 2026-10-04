@@ -76,7 +76,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ onOpenResume }) => {
             ) : (
               <a
                 href={PERSONAL_INFO.resumePath}
-                download="Rohit-Kumar-Resume.pdf"
+                download="rohit_kumar_resume.pdf"
                 className="w-10 h-10 rounded-full bg-primary-blue/20 hover:bg-primary-blue/30 text-primary-cyan border border-primary-blue/40 flex items-center justify-center transition-all duration-200 transform hover:scale-110 shadow-[0_0_15px_rgba(56,119,255,0.25)] group relative"
                 aria-label="Download Resume"
               >

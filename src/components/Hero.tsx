@@ -126,7 +126,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 href={PERSONAL_INFO.resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
-                download="Rohit-Kumar-Resume.pdf"
+                download="rohit_kumar_resume.pdf"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-primary-cyan bg-primary-blue/15 hover:bg-primary-blue/25 border border-primary-blue/40 hover:border-primary-cyan rounded-xl transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer"
                 title="Download Resume PDF"
               >

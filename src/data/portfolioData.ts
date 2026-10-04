@@ -18,7 +18,7 @@ export const PERSONAL_INFO = {
   githubUsername: "rohit221952",
   linkedin: "https://www.linkedin.com/in/rohitkumar88966/",
   vpnSite: "https://vpnexpertguide.com",
-  resumePath: "./Rohit-Kumar-Resume.pdf",
+  resumePath: "./rohit_kumar_resume.pdf",
   profileImage: "./assets/rohit-kumar.jpg"
 };
 
@@ -231,7 +231,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "MERN Stack Developer Trainee",
     company: "QSpiders, Noida",
     location: "Noida, India",
-    period: "August 2025 – March 2026",
+    period: "August 2025 – May 2026",
     badge: "Full-Stack Training",
     isCurrent: false,
     description: "MongoDB, Express.js, React.js, Node.js, REST APIs, JWT authentication, protected routes, Redux Toolkit.",

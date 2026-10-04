@@ -50,7 +50,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
             <div className="flex items-center gap-2">
               <a
                 href={PERSONAL_INFO.resumePath}
-                download="Rohit-Kumar-Resume.pdf"
+                download="rohit_kumar_resume.pdf"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary-blue/20 hover:bg-primary-blue/30 text-primary-cyan border border-primary-blue/40 transition-colors"
                 title="Download PDF"
               >
