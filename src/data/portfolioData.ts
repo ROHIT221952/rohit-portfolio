@@ -2,16 +2,13 @@ import { Project, ExperienceItem, EducationItem, CertificationItem, SkillItem, S
 
 export const PERSONAL_INFO = {
   name: "Rohit Kumar",
-  title: "Full-Stack Developer | WordPress Expert | Technical SEO & Digital Marketer",
+  title: "MERN Stack Foundations | Full Stack Developer",
   shortTitle: "Full-Stack Dev · WordPress · SEO",
-  primaryRole: "Full-Stack Developer | WordPress Expert | Technical SEO & Digital Marketer",
-  supportingRole: "WORDPRESS EXPERT · TECHNICAL SEO & DIGITAL MARKETER",
-  heroBio: "Computer Science graduate specialized in engineering scalable Full-Stack MERN applications, high-performance WordPress platforms, technical SEO architectures, and digital marketing growth.",
-  aboutHeadline: "FULL-STACK ENGINEERING. WORDPRESS MASTERY. TECHNICAL SEO & DIGITAL GROWTH.",
-  aboutBio: "Fresh B.Tech Computer Science graduate with hands-on expertise building production-ready web applications across the complete MERN ecosystem alongside high-authority WordPress platforms. Passionate about clean modular code, intuitive UI/UX, robust API security, Core Web Vitals optimization, and technical SEO strategies that drive organic reach.",
-  secondaryNote: "Specialized in Full-Stack MERN Engineering, Custom WordPress Architecture, Technical & On-Page SEO Audits, and Digital Marketing Growth.",
-  educationNote: "B.Tech Computer Science & Engineering — Kanpur Institute of Technology, June 2025",
-  availability: "AVAILABLE FOR FULL-TIME & HIGH-IMPACT ROLES",
+  primaryRole: "MERN Stack Foundations | Full Stack Developer",
+  secondaryRole: "Digital Marketing & SEO Executive | WordPress Website Management",
+  heroBio: "I build responsive web applications, solve real-world problems, and create performance-focused digital experiences using modern web technologies. I also work with WordPress, SEO, analytics, and digital marketing to improve website visibility and user experience.",
+  aboutHeadline: "PROFESSIONAL SUMMARY",
+  availability: "Available for Immediate Hiring",
   location: "Kanpur, India",
   email: "rohitkumar10eng@gmail.com",
   phone: "+91 7392030573",
@@ -19,34 +16,38 @@ export const PERSONAL_INFO = {
   whatsapp: "https://wa.me/917392030573?text=Hi%20Rohit,%20I%20saw%20your%20portfolio%20and%20would%20love%20to%20connect!",
   github: "https://github.com/rohit221952",
   githubUsername: "rohit221952",
-  linkedin: "https://linkedin.com/in/rohitkumar-dev",
+  linkedin: "https://www.linkedin.com/in/rohitkumar88966/",
   vpnSite: "https://vpnexpertguide.com",
   resumePath: "/Rohit-Kumar-Resume.pdf",
   profileImage: "/assets/rohit-kumar.jpg"
 };
 
 export const QUICK_CONTACT_SUBJECTS = [
-  "💼 Full-Time Full-Stack Opportunity",
-  "🚀 WordPress Architecture & Custom Build",
-  "📈 Technical SEO & Digital Marketing Strategy",
-  "🎯 High-Impact Contract / Freelance"
+  "💼 Full Stack Development",
+  "⚡ Frontend Development",
+  "🐍 Python Development",
+  "🚀 WordPress Development",
+  "📈 SEO & Organic Growth",
+  "🎯 Digital Marketing"
 ];
 
 export const MARQUEE_TECH = [
-  "TYPESCRIPT",
+  "FULL STACK DEVELOPMENT",
   "REACT.JS",
   "NEXT.JS",
   "NODE.JS",
   "EXPRESS.JS",
   "MONGODB",
-  "JAVASCRIPT",
+  "PYTHON",
+  "JAVASCRIPT (ES6+)",
   "TAILWIND CSS",
   "REST APIs",
-  "JWT",
+  "JWT AUTH",
   "GIT",
   "GITHUB",
   "WORDPRESS",
-  "TECHNICAL SEO"
+  "TECHNICAL SEO",
+  "DIGITAL MARKETING"
 ];
 
 export const STATS: StatItem[] = [
@@ -82,143 +83,129 @@ export const STATS: StatItem[] = [
   }
 ];
 
-export const ABOUT_CARDS = [
-  {
-    id: "mern",
-    title: "MERN Stack Mastery",
-    icon: "Code2",
-    color: "#3877FF",
-    description: "End-to-end web development with React, Node.js, Express, and MongoDB, utilizing Redux Toolkit for clean state architecture."
-  },
-  {
-    id: "backend",
-    title: "Backend APIs & Auth",
-    icon: "ShieldCheck",
-    color: "#25D9FF",
-    description: "Architecting secure RESTful endpoints, role-based access control (RBAC), JWT authentication, bcrypt hashing, and protected middleware."
-  },
-  {
-    id: "ai",
-    title: "AI API Integration",
-    icon: "Sparkles",
-    color: "#985CFF",
-    description: "Integrating modern LLM models (OpenAI, Gemini AI) into interactive production apps with token/credit-metered real-time pipelines."
-  },
-  {
-    id: "performance",
-    title: "Performance & CI/CD",
-    icon: "Gauge",
-    color: "#6535FF",
-    description: "Achieving 90+ Lighthouse scores via lazy loading, code-splitting, asset compression, and automated Netlify/Vercel CI/CD pipelines."
-  }
-];
-
 export const SKILL_CATEGORIES = [
-  { id: "all", name: "All Technologies" },
-  { id: "frontend", name: "Frontend" },
-  { id: "backend", name: "Backend" },
-  { id: "database", name: "Database" },
-  { id: "tools", name: "Tools & Workflow" },
-  { id: "cms_seo", name: "WordPress & SEO" }
+  { id: "all", name: "All Skills" },
+  { id: "development", name: "Development" },
+  { id: "cms_seo", name: "WordPress & SEO" },
+  { id: "digital_marketing", name: "Digital Marketing" },
+  { id: "tools_analytics", name: "Tools & Analytics" }
 ];
 
 export const SKILLS: SkillItem[] = [
-  // ─── DEVELOPER SKILLS (CORE ENGINEERING & TOOLS) ───
-  // 1. Frontend
-  { name: "TypeScript", category: "frontend", level: "Advanced", iconName: "Code2", glowColor: "#3178C6" },
-  { name: "JavaScript (ES6+)", category: "frontend", level: "Advanced", iconName: "Code", glowColor: "#F7DF1E" },
-  { name: "React.js", category: "frontend", level: "Advanced", iconName: "Atom", glowColor: "#25D9FF" },
-  { name: "Next.js 14", category: "frontend", level: "Intermediate", iconName: "Layers", glowColor: "#FFFFFF" },
-  { name: "HTML5", category: "frontend", level: "Expert", iconName: "FileCode", glowColor: "#E34F26" },
-  { name: "CSS3", category: "frontend", level: "Advanced", iconName: "Palette", glowColor: "#1572B6" },
-  { name: "Tailwind CSS", category: "frontend", level: "Advanced", iconName: "Wind", glowColor: "#38BDF8" },
-  { name: "Bootstrap", category: "frontend", level: "Proficient", iconName: "LayoutGrid", glowColor: "#7952B3" },
+  // ─── 1. DEVELOPMENT & ENGINEERING ───
+  // FRONTEND
+  { name: "HTML5", category: "development", subgroup: "frontend", level: "Advanced", iconName: "FileCode", glowColor: "#E34F26" },
+  { name: "CSS3", category: "development", subgroup: "frontend", level: "Advanced", iconName: "Palette", glowColor: "#1572B6" },
+  { name: "JavaScript (ES6+)", category: "development", subgroup: "frontend", level: "Advanced", iconName: "Code", glowColor: "#F7DF1E" },
+  { name: "React.js", category: "development", subgroup: "frontend", level: "Advanced", iconName: "Atom", glowColor: "#25D9FF" },
+  { name: "Next.js", category: "development", subgroup: "frontend", level: "Intermediate", iconName: "Layers", glowColor: "#FFFFFF" },
+  { name: "Tailwind CSS", category: "development", subgroup: "frontend", level: "Advanced", iconName: "Wind", glowColor: "#38BDF8" },
+  { name: "Bootstrap", category: "development", subgroup: "frontend", level: "Proficient", iconName: "LayoutGrid", glowColor: "#7952B3" },
+  { name: "Redux Toolkit", category: "development", subgroup: "frontend", level: "Proficient", iconName: "Workflow", glowColor: "#764ABC" },
 
-  // 2. Backend
-  { name: "Node.js", category: "backend", level: "Advanced", iconName: "Server", glowColor: "#68A063" },
-  { name: "Express.js", category: "backend", level: "Advanced", iconName: "Cpu", glowColor: "#99A4BB" },
-  { name: "REST API Design", category: "backend", level: "Advanced", iconName: "Network", glowColor: "#3877FF" },
-  { name: "JWT Authentication", category: "backend", level: "Advanced", iconName: "KeyRound", glowColor: "#FB015B" },
+  // BACKEND
+  { name: "Node.js", category: "development", subgroup: "backend", level: "Advanced", iconName: "Server", glowColor: "#68A063" },
+  { name: "Express.js", category: "development", subgroup: "backend", level: "Advanced", iconName: "Cpu", glowColor: "#99A4BB" },
+  { name: "REST API Design", category: "development", subgroup: "backend", level: "Advanced", iconName: "Network", glowColor: "#3877FF" },
+  { name: "JWT Authentication", category: "development", subgroup: "backend", level: "Proficient", iconName: "KeyRound", glowColor: "#FB015B" },
+  { name: "bcrypt", category: "development", subgroup: "backend", level: "Proficient", iconName: "Shield", glowColor: "#25D9FF" },
 
-  // 3. Database
-  { name: "MongoDB", category: "database", level: "Advanced", iconName: "Database", glowColor: "#47A248" },
-  { name: "MySQL", category: "database", level: "Intermediate", iconName: "Table", glowColor: "#00758F" },
+  // DATABASE
+  { name: "MongoDB", category: "development", subgroup: "database", level: "Advanced", iconName: "Database", glowColor: "#47A248" },
+  { name: "Mongoose", category: "development", subgroup: "database", level: "Advanced", iconName: "Binary", glowColor: "#880000" },
+  { name: "MySQL", category: "development", subgroup: "database", level: "Intermediate", iconName: "Table", glowColor: "#00758F" },
 
-  // 4. Tools & Workflow
-  { name: "Git", category: "tools", level: "Advanced", iconName: "GitBranch", glowColor: "#F05032" },
-  { name: "GitHub", category: "tools", level: "Advanced", iconName: "Github", glowColor: "#FFFFFF" },
-  { name: "Figma-to-UI", category: "tools", level: "Advanced", iconName: "Figma", glowColor: "#F24E1E" },
+  // PROGRAMMING
+  { name: "Python", category: "development", subgroup: "programming", level: "Proficient", iconName: "Terminal", glowColor: "#3776AB" },
 
-  // ─── WORDPRESS & TECHNICAL SEO (CMS & GROWTH) ───
-  // 5. WordPress & SEO
-  { name: "WordPress", category: "cms_seo", level: "Advanced", iconName: "Compass", glowColor: "#21759B" },
-  { name: "Elementor", category: "cms_seo", level: "Advanced", iconName: "Sliders", glowColor: "#92003B" },
-  { name: "Technical SEO", category: "cms_seo", level: "Advanced", iconName: "Search", glowColor: "#3877FF" },
-  { name: "On-Page SEO", category: "cms_seo", level: "Advanced", iconName: "FileCheck", glowColor: "#25D9FF" },
-  { name: "Keyword Research", category: "cms_seo", level: "Proficient", iconName: "Target", glowColor: "#985CFF" },
-  { name: "Google Search Console", category: "cms_seo", level: "Proficient", iconName: "LineChart", glowColor: "#4285F4" },
-  { name: "Google Analytics", category: "cms_seo", level: "Proficient", iconName: "BarChart3", glowColor: "#E37400" }
+  // TOOLS / DEVELOPMENT
+  { name: "Git", category: "development", subgroup: "tools", level: "Advanced", iconName: "GitBranch", glowColor: "#F05032", isToolOrAnalytics: true },
+  { name: "GitHub", category: "development", subgroup: "tools", level: "Advanced", iconName: "Github", glowColor: "#FFFFFF", isToolOrAnalytics: true },
+  { name: "Postman", category: "development", subgroup: "tools", level: "Advanced", iconName: "Send", glowColor: "#FF6C37", isToolOrAnalytics: true },
+  { name: "VS Code", category: "development", subgroup: "tools", level: "Advanced", iconName: "Code2", glowColor: "#007ACC", isToolOrAnalytics: true },
+  { name: "Figma-to-UI", category: "development", subgroup: "tools", level: "Proficient", iconName: "Figma", glowColor: "#F24E1E", isToolOrAnalytics: true },
+  { name: "Vercel", category: "development", subgroup: "tools", level: "Proficient", iconName: "Triangle", glowColor: "#FFFFFF", isToolOrAnalytics: true },
+  { name: "Netlify", category: "development", subgroup: "tools", level: "Proficient", iconName: "Globe", glowColor: "#00C7B7", isToolOrAnalytics: true },
+
+  // ─── 2. WORDPRESS & SEO ───
+  { name: "WordPress", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "Compass", glowColor: "#21759B" },
+  { name: "Elementor", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "Sliders", glowColor: "#92003B" },
+  { name: "Astra", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "Sparkles", glowColor: "#8A3BEE" },
+  { name: "Custom CSS", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "Palette", glowColor: "#1572B6" },
+  { name: "On-Page SEO", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "FileCheck", glowColor: "#25D9FF" },
+  { name: "Technical SEO", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "Search", glowColor: "#3877FF" },
+  { name: "Keyword Research", category: "cms_seo", subgroup: "cms_seo", level: "Proficient", iconName: "Target", glowColor: "#985CFF" },
+  { name: "Internal Linking", category: "cms_seo", subgroup: "cms_seo", level: "Advanced", iconName: "Network", glowColor: "#38BDF8" },
+  { name: "Google Search Console", category: "cms_seo", subgroup: "cms_seo", level: "Proficient", iconName: "LineChart", glowColor: "#4285F4", isToolOrAnalytics: true },
+  { name: "Google Analytics", category: "cms_seo", subgroup: "cms_seo", level: "Proficient", iconName: "BarChart3", glowColor: "#E37400", isToolOrAnalytics: true },
+
+  // ─── 3. DIGITAL MARKETING ───
+  { name: "SEM / PPC", category: "digital_marketing", subgroup: "digital_marketing", level: "Proficient", iconName: "Target", glowColor: "#E37400" },
+  { name: "Content Writing & Copywriting", category: "digital_marketing", subgroup: "digital_marketing", level: "Advanced", iconName: "FileText", glowColor: "#38BDF8" },
+  { name: "Social Media Marketing", category: "digital_marketing", subgroup: "digital_marketing", level: "Proficient", iconName: "Share2", glowColor: "#E1306C" },
+  { name: "Email Marketing", category: "digital_marketing", subgroup: "digital_marketing", level: "Proficient", iconName: "Mail", glowColor: "#FFB300" },
+  { name: "AI & Marketing Automation", category: "digital_marketing", subgroup: "digital_marketing", level: "Intermediate", iconName: "Sparkles", glowColor: "#985CFF" },
+  { name: "Video Marketing", category: "digital_marketing", subgroup: "digital_marketing", level: "Intermediate", iconName: "Video", glowColor: "#FF0000" },
+  { name: "Conversion Rate Optimization (CRO)", category: "digital_marketing", subgroup: "digital_marketing", level: "Proficient", iconName: "TrendingUp", glowColor: "#00C7B7" },
+  { name: "Analytics & Reporting", category: "digital_marketing", subgroup: "digital_marketing", level: "Proficient", iconName: "BarChart3", glowColor: "#25D9FF", isToolOrAnalytics: true }
 ];
 
 export const PROJECTS: Project[] = [
   {
+    id: "vpn-expert-guide",
+    title: "VPN Affiliate & Blog Website",
+    subtitle: "High-Authority WordPress Publishing & Technical SEO",
+    category: "WordPress & SEO",
+    featured: true,
+    badge: "01 · LIVE WEB PLATFORM",
+    description: "Professional WordPress publishing platform built with Astra and Elementor, featuring custom CSS styling, internal linking architecture, Google Search Console & Analytics telemetry.",
+    longDescription: "Real-world CMS engineering and search engine optimization case study. Features custom mega menus, rich visual assets, performance tuning, and structured internal linking driving organic visibility.",
+    points: [
+      "Engineered custom responsive layouts, mega menus, headers, and footers using Astra and Elementor with custom CSS.",
+      "Executed end-to-end technical & on-page SEO: schema markup, internal linking, and Core Web Vitals speed optimization.",
+      "Monitored query rankings and organic growth telemetry via Google Search Console and Google Analytics 4."
+    ],
+    techStack: ["WordPress", "Astra", "Elementor", "Custom CSS", "SEO", "Google Analytics", "Google Search Console"],
+    liveUrl: "https://vpnexpertguide.com",
+    previewType: "vpn-guide"
+  },
+  {
     id: "ai-story-generator",
     title: "AI Story Generator",
-    subtitle: "AI-Powered Narrative & Illustration Platform",
-    category: "Full-Stack AI Application",
+    subtitle: "Interactive Full-Stack AI Narrative Platform",
+    category: "Full-Stack Development",
     featured: true,
-    badge: "01 · FEATURED AI PRODUCT",
-    description: "Full-stack AI app where users generate personalized stories and accompanying illustrations via OpenAI & Gemini APIs, with real-time credit tracking and Clerk/JWT protected routes.",
-    longDescription: "A comprehensive production-grade AI platform integrating multi-model LLMs. Features seamless story prompts, custom illustration synthesis, a live credit-wallet system monitoring token consumption per user, role-based authentication, and responsive Tailwind UI.",
+    badge: "02 · FULL-STACK WEB APPLICATION",
+    description: "Full-stack AI storytelling application built with React, Vite, and Node.js. Integrates OpenAI and Google Gemini APIs with Clerk Auth and JWT-protected Express routes.",
+    longDescription: "Production-grade AI platform integrating multi-model LLMs. Features seamless story prompts, custom illustration synthesis, user credit tracking, and responsive Tailwind UI.",
     points: [
-      "Integrated OpenAI and Google Gemini APIs for dual text narrative generation and visual illustration prompts.",
-      "Engineered real-time credit-wallet system in MongoDB tracking user token balances and API usage quotas.",
-      "Implemented multi-layer authentication combining Clerk Auth and custom JWT middleware for protected backend routes.",
-      "Optimized asynchronous API requests with robust loading skeletons, error boundaries, and instant feedback."
+      "Integrated OpenAI and Google Gemini APIs for responsive text storytelling and visual prompt synthesis.",
+      "Engineered Node.js/Express backend with Clerk authentication and custom JWT route protection.",
+      "Structured MongoDB database models to manage user sessions, prompts, and credit balances."
     ],
-    techStack: ["React", "TypeScript", "Vite", "Node.js", "Express.js", "MongoDB", "OpenAI API", "Gemini AI", "Clerk Auth", "JWT", "Tailwind CSS"],
+    techStack: ["React.js", "Vite", "Tailwind CSS", "OpenAI API", "Gemini AI", "Clerk Auth", "JWT", "Node.js", "Express.js", "MongoDB"],
     liveUrl: "https://ai-story-generator.netlify.app/",
     githubUrl: "https://github.com/rohit221952/ai-story-generator",
     previewType: "ai-story"
   },
   {
     id: "sporting-goods-ecommerce",
-    title: "Sporting Goods E-Commerce",
-    subtitle: "Full-Stack Retail Platform with Order Management",
-    category: "Full-Stack MERN E-Commerce",
+    title: "E-Commerce Store - Sporting Goods",
+    subtitle: "Full-Stack MERN Architecture with Order Management",
+    category: "Full-Stack Development",
     featured: true,
-    badge: "02 · MERN STACK APPLICATION",
-    description: "Full-stack e-commerce platform with dynamic product listings, search & filter, cart management, JWT authentication with role separation, and 10+ custom RESTful API endpoints.",
-    longDescription: "A complete online store built from scratch with MERN stack architecture. Incorporates Redux Toolkit for global shopping cart state, JWT-secured backend routes with role-based access control (Admin vs Customer), and comprehensive order history tracking.",
+    badge: "03 · MERN STACK PLATFORM",
+    description: "Production-ready MERN retail platform featuring responsive product catalogs, dynamic cart state management with Redux Toolkit, and secure Express/MongoDB REST APIs.",
+    longDescription: "A complete online store built from scratch with MERN stack architecture. Incorporates Redux Toolkit for global shopping cart state, JWT-secured backend routes with role-based access control, and order history tracking.",
     points: [
-      "Built 10+ custom RESTful API endpoints with Express and Mongoose for product CRUD, orders, and user management.",
-      "Redux Toolkit state management powering instant search, multi-criteria category filtering, and real-time cart math.",
-      "Role-Based Access Control (RBAC) separating administrative product controls from customer checkout workflows.",
-      "Mobile-first responsive interface with persistent cart states and clean order confirmation workflows."
+      "Built 10+ RESTful API endpoints in Express and Mongoose for product catalogs, cart math, and user orders.",
+      "Implemented Redux Toolkit global state management for instant filtering, search, and synchronized cart items.",
+      "Secured authentication and checkout workflows using JWT tokens and role-based route middleware."
     ],
-    techStack: ["React.js", "TypeScript", "Redux Toolkit", "Axios", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT"],
+    techStack: ["React.js", "Redux Toolkit", "Axios", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT"],
     liveUrl: "https://sporting-goods.netlify.app/",
     githubUrl: "https://github.com/rohit221952/sporting-goods-ecommerce",
     previewType: "ecommerce"
-  },
-  {
-    id: "vpn-expert-guide",
-    title: "VPN Expert Guide",
-    subtitle: "Professional WordPress Publishing & Technical SEO Case Study",
-    category: "WordPress & Technical SEO Case Study",
-    featured: true,
-    badge: "03 · PROFESSIONAL CASE STUDY",
-    description: "Built and actively maintains a high-authority WordPress publishing platform with Astra, Elementor, custom CSS, 92+ rich-media articles, and comprehensive technical & on-page SEO.",
-    longDescription: "Complementary professional production work demonstrating real-world CMS engineering and search engine optimization. Features custom mega menus, rich visual assets, performance tuning, and structured internal linking driving organic growth.",
-    points: [
-      "Engineered custom responsive layouts, mega menus, headers, and footers using Astra theme and Elementor with custom CSS.",
-      "Published and formatted 92+ in-depth rich-media blog posts with optimized graphics, comparison tables, and embedded media.",
-      "Executed end-to-end technical SEO: schema markup, site speed optimization, keyword clustering, and internal link architecture.",
-      "Tracking search performance and organic query growth via Google Analytics 4 and Google Search Console."
-    ],
-    techStack: ["WordPress", "Elementor", "Astra Theme", "Custom CSS", "Technical SEO", "92+ Posts", "Google Analytics", "Search Console"],
-    liveUrl: "https://vpnexpertguide.com",
-    previewType: "vpn-guide"
   }
 ];
 
@@ -228,47 +215,48 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "WordPress Developer & SEO Executive",
     company: "True Technologies",
     location: "Kanpur / Remote",
-    period: "May 2026 – Present",
+    period: "April 2026 – Present",
     badge: "Active Professional Role",
     isCurrent: true,
-    description: "Building and maintaining WordPress websites while managing technical SEO, on-page SEO, keyword research, content structure, analytics and website performance.",
+    description: "WordPress website management, Astra, Elementor, custom CSS, responsive layouts, SEO, internal linking, website performance, Google Analytics, Google Search Console.",
     points: [
-      "Build and maintain WordPress websites using the Astra theme, Elementor, and custom CSS — including a full VPN affiliate authority site with mega menus, custom headers/footers, and responsive layouts.",
-      "Implement on-page and technical SEO — keyword research, content structure, internal linking, and performance optimization — tracking results via Google Analytics and Search Console.",
-      "Set up site backups, configure navigation and mega menus, and deliver editable, UI-based solutions so non-technical stakeholders can manage content independently."
+      "Manage and maintain WordPress websites using the Astra theme, Elementor, and custom CSS with fully responsive layouts.",
+      "Execute on-page and technical SEO: keyword research, internal linking, content hierarchy, and website performance optimization.",
+      "Monitor site telemetry, indexation, and user traffic flows via Google Analytics 4 and Google Search Console."
     ],
-    tags: ["WordPress", "Elementor", "Astra", "Technical SEO", "On-Page SEO", "Google Analytics", "Search Console"]
+    tags: ["WordPress", "Astra", "Elementor", "Custom CSS", "Technical SEO", "Internal Linking", "Google Analytics", "Google Search Console"]
   },
   {
     id: "qspiders",
     role: "MERN Stack Developer Trainee",
-    company: "QSpiders",
+    company: "QSpiders, Noida",
     location: "Noida, India",
-    period: "August 2025 – May 2026",
+    period: "August 2025 – March 2026",
     badge: "Full-Stack Training",
     isCurrent: false,
-    description: "Completed intensive project-based training in MongoDB, Express.js, React.js, Node.js, Redux Toolkit, authentication and protected REST APIs.",
+    description: "MongoDB, Express.js, React.js, Node.js, REST APIs, JWT authentication, protected routes, Redux Toolkit.",
     points: [
-      "Underwent intensive project-based full-stack training covering MongoDB, Express.js, React.js, and Node.js with focus on real-world development workflows and industry coding standards.",
-      "Built RESTful APIs with JWT-based authentication, protected route middleware, and MongoDB/Mongoose integration; applied Redux Toolkit and React Router v6 across multiple projects.",
-      "Delivered 3 capstone projects independently — an e-commerce store, task manager with CRUD, and a role-based authentication system — from development to deployment."
+      "Completed intensive project-based training across MongoDB, Express.js, React.js, and Node.js.",
+      "Architected secure RESTful APIs with JWT authentication, protected route middleware, and MongoDB/Mongoose data models.",
+      "Implemented Redux Toolkit state architecture, client-side routing, and error boundaries across modular full-stack projects."
     ],
-    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Redux Toolkit", "JWT Auth", "REST APIs"]
+    tags: ["MongoDB", "Express.js", "React.js", "Node.js", "REST APIs", "JWT Auth", "Protected Routes", "Redux Toolkit"]
   },
   {
     id: "independent",
     role: "Frontend Developer – Independent Projects",
-    company: "Self-Initiated / Remote",
+    company: "Self-Initiated",
     location: "Remote",
     period: "March 2025 – Present",
     badge: "Software Engineering",
     isCurrent: true,
-    description: "Building responsive React applications with AI integrations, reliable asynchronous experiences and performance-focused deployment workflows.",
+    description: "Responsive React applications, Figma-style UI implementation, Netlify / Vercel, OpenAI, Gemini, Clerk Auth, lazy loading, code splitting, image optimization.",
     points: [
-      "Built 3+ responsive React.js applications by converting Figma designs to pixel-perfect UIs; integrated OpenAI, Gemini AI, and Clerk Auth to power AI-driven features in production.",
-      "Achieved Lighthouse scores of 90+ using lazy loading, code splitting, and image optimization; deployed all projects on Netlify and Vercel with GitHub-based CI/CD."
+      "Built responsive React applications translating Figma-style UI specifications into modular, accessible components.",
+      "Integrated OpenAI and Google Gemini APIs alongside Clerk Auth to power production AI-driven workflows.",
+      "Achieved high performance via lazy loading, code splitting, and asset optimization, deployed through automated Netlify & Vercel CI/CD."
     ],
-    tags: ["React.js", "Vite", "Tailwind CSS", "OpenAI API", "Gemini AI", "Clerk Auth", "CI/CD", "Lighthouse 90+"]
+    tags: ["React.js", "Figma-to-UI", "Vercel", "Netlify", "OpenAI API", "Gemini AI", "Clerk Auth", "Code Splitting"]
   }
 ];
 
@@ -276,14 +264,14 @@ export const EDUCATION: EducationItem[] = [
   {
     id: "kit-btech",
     degree: "B.Tech – Computer Science & Engineering",
-    institution: "Kanpur Institute of Technology (KIT)",
+    institution: "Kanpur Institute of Technology (KIT), Kanpur, India",
     location: "Kanpur, India",
     period: "Graduated: June 2025",
-    description: "Four-year engineering degree with deep focus on Computer Science fundamentals, Object-Oriented Programming, Data Structures & Algorithms, Database Management Systems, Computer Networks, and Full-Stack Web Development.",
+    description: "Four-year engineering degree with solid grounding in Computer Science fundamentals, Object-Oriented Programming, Data Structures & Algorithms, Database Management Systems, and Web Application Engineering.",
     highlights: [
-      "Core Courses: Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, Software Engineering",
-      "Hands-on practical development of web applications and algorithmic problem solving",
-      "Graduated with strong technical grounding to contribute in fast-paced software engineering teams"
+      "Core Courses: Data Structures & Algorithms, DBMS, Operating Systems, Computer Networks, Software Engineering",
+      "Hands-on practical development of scalable web applications and algorithmic problem solving",
+      "B.Tech degree completed with strong engineering problem-solving principles"
     ]
   }
 ];
@@ -291,8 +279,8 @@ export const EDUCATION: EducationItem[] = [
 export const CERTIFICATIONS: CertificationItem[] = [
   {
     id: "qspiders-cert",
-    title: "Full Stack Web Development Certification",
-    issuer: "QSpiders",
+    title: "Full Stack Web Development",
+    issuer: "QSpiders, Noida (2026)",
     location: "Noida, India",
     year: "2026",
     description: "Comprehensive industry certification covering advanced full-stack web engineering, asynchronous programming, RESTful API architecture, state management, and modern deployment standards.",
@@ -302,6 +290,24 @@ export const CERTIFICATIONS: CertificationItem[] = [
       "Redux Toolkit Global State & React Architecture",
       "Production Deployments on Cloud Infrastructure"
     ]
+  }
+];
+
+export const HOBBIES = [
+  {
+    title: "Reading Books",
+    subtitle: "Tech architecture & continuous learning",
+    iconName: "BookOpen"
+  },
+  {
+    title: "Learning New Tech",
+    subtitle: "Exploring emerging tools & frameworks",
+    iconName: "Sparkles"
+  },
+  {
+    title: "Exploring Nature",
+    subtitle: "Mindful outdoors & refreshing walks",
+    iconName: "Compass"
   }
 ];
 
@@ -361,17 +367,4 @@ export const WORKFLOW_STEPS: WorkflowStep[] = [
     ],
     iconName: "Rocket"
   }
-];
-
-export const ECOSYSTEM_TOOLS = [
-  { name: "ChatGPT", category: "AI Tool", icon: "Bot" },
-  { name: "Claude", category: "AI Tool", icon: "Sparkles" },
-  { name: "Gemini", category: "AI Tool", icon: "Cpu" },
-  { name: "Cursor AI", category: "AI IDE", icon: "Terminal" },
-  { name: "React.js", category: "Frontend", icon: "Atom" },
-  { name: "Node.js", category: "Backend", icon: "Server" },
-  { name: "MongoDB", category: "Database", icon: "Database" },
-  { name: "Postman", category: "API Testing", icon: "Send" },
-  { name: "GitHub", category: "Version Control", icon: "Github" },
-  { name: "Vercel", category: "Deployment", icon: "Triangle" }
 ];

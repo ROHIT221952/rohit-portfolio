@@ -4,18 +4,15 @@ import {
   MapPin,
   Mail,
   Phone,
-  Globe,
   Download,
   ArrowRight,
-  ChevronDown,
-  Sparkles,
-  Terminal,
   Code2,
-  Copy,
   Check,
-  Eye
+  Sparkles,
+  Eye,
+  ChevronDown
 } from 'lucide-react';
-import { GithubIcon, LinkedInIcon, WhatsAppIcon } from './BrandIcons';
+import { GithubIcon, LinkedInIcon } from './BrandIcons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -23,56 +20,18 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
-  const [terminalTab, setTerminalTab] = useState<'config' | 'stack' | 'contact'>('config');
-  const [copiedCode, setCopiedCode] = useState(false);
   const [imageError, setImageError] = useState(false);
-
-  const getTerminalSnippet = () => {
-    switch (terminalTab) {
-      case 'config':
-        return `const developer = {
-  name: "${PERSONAL_INFO.name}",
-  roles: [
-    "Full-Stack Developer",
-    "WordPress Expert",
-    "Technical SEO & Digital Marketer"
-  ],
-  status: "Available Immediately"
-};`;
-      case 'stack':
-        return `// Technical Specialization
-const technologies = [
-  "React.js", "TypeScript", "Node.js",
-  "Express.js", "MongoDB", "WordPress",
-  "Technical SEO", "Digital Marketing"
-];`;
-      case 'contact':
-        return `// Direct Contact Handshake
-const contact = {
-  email: "${PERSONAL_INFO.email}",
-  phone: "${PERSONAL_INFO.phone}",
-  whatsapp: "${PERSONAL_INFO.whatsappNumber}",
-  location: "${PERSONAL_INFO.location}"
-};`;
-    }
-  };
-
-  const handleCopySnippet = () => {
-    navigator.clipboard.writeText(getTerminalSnippet());
-    setCopiedCode(true);
-    setTimeout(() => setCopiedCode(false), 2000);
-  };
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen lg:h-screen lg:max-h-[960px] xl:max-h-[1050px] pt-16 pb-2 sm:pt-20 sm:pb-3 lg:pt-16 lg:pb-2 flex flex-col justify-between items-center overflow-hidden cosmic-grid"
+      className="relative min-h-screen pt-20 pb-12 sm:pt-24 sm:pb-16 flex flex-col justify-center items-center overflow-hidden cosmic-grid"
     >
       {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] md:w-[900px] h-[650px] md:h-[900px] bg-gradient-radial from-primary-blue/15 via-primary-violet/8 to-transparent rounded-full pointer-events-none blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[850px] h-[600px] md:h-[850px] bg-gradient-radial from-primary-blue/15 via-primary-violet/8 to-transparent rounded-full pointer-events-none blur-3xl" />
 
       <div className="max-w-[1440px] xl:max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 w-full z-10 my-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
           
           {/* Left Hero Column */}
           <motion.div
@@ -81,8 +40,8 @@ const contact = {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 flex flex-col items-start"
           >
-            {/* Badges / Status Pills */}
-            <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-2.5">
+            {/* Availability & Location Pills */}
+            <div className="flex flex-wrap items-center gap-2 mb-3">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-elevated/90 border border-primary-blue/30 text-[10px] sm:text-xs font-mono tracking-wide text-primary-cyan shadow-[0_0_15px_rgba(37,217,255,0.15)]">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
                 <span>{PERSONAL_INFO.availability}</span>
@@ -100,42 +59,50 @@ const contact = {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="text-text-secondary text-sm sm:text-base font-medium flex items-center gap-2 mb-1"
             >
-              <span>Hi, I’m</span>
-              <span className="text-white font-semibold">{PERSONAL_INFO.name}</span>
+              <span>Hi, I'm</span>
               <span className="inline-block animate-bounce">👋</span>
             </motion.p>
 
-            {/* Primary Headline */}
+            {/* Candidate Name H1 */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[2.6rem] xl:text-[3.25rem] 2xl:text-[3.75rem] tracking-tight leading-[1.08] mb-2 sm:mb-2.5"
+              className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.5rem] tracking-tight text-white mb-3"
             >
-              <span className="block text-white uppercase">FULL-STACK</span>
-              <span className="block gradient-text-blue-cyan uppercase glow-text-blue">
-                DEVELOPER
-              </span>
+              ROHIT KUMAR
             </motion.h1>
 
-            {/* Supporting Role Pill */}
+            {/* PRIMARY ROLE LINE */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.6 }}
-              className="inline-block px-3 py-1 mb-2.5 sm:mb-3 rounded-md bg-primary-blue/10 border border-primary-blue/30 text-xs sm:text-sm font-mono font-semibold tracking-wider text-primary-cyan uppercase"
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-primary-blue/15 border border-primary-blue/40 text-primary-cyan font-heading font-bold text-xs sm:text-sm md:text-base tracking-wide shadow-[0_0_15px_rgba(56,119,255,0.25)] mb-2"
             >
-              {PERSONAL_INFO.supportingRole}
+              <Code2 className="w-4 h-4 text-primary-cyan shrink-0" />
+              <span>MERN Stack Foundations | Full Stack Developer</span>
             </motion.div>
 
-            {/* Bio Description */}
+            {/* SECONDARY ROLE LINE (UNDERNEATH) */}
+            <motion.div
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.48, duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-primary-violet/10 border border-primary-violet/30 text-primary-violet font-mono text-[11px] sm:text-xs md:text-sm font-semibold tracking-wide mb-4"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-primary-violet shrink-0" />
+              <span>Digital Marketing &amp; SEO Executive | WordPress Website Management</span>
+            </motion.div>
+
+            {/* Hero Description */}
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.7 }}
-              className="text-text-secondary text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mb-4 sm:mb-5"
+              className="text-text-secondary text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mb-5"
             >
-              {PERSONAL_INFO.heroBio}
+              I build responsive web applications, solve real-world problems, and create performance-focused digital experiences using modern web technologies. I also work with WordPress, SEO, analytics, and digital marketing to improve website visibility and user experience.
             </motion.p>
 
             {/* Action Buttons */}
@@ -143,7 +110,7 @@ const contact = {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.7 }}
-              className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4 sm:mb-5 w-full sm:w-auto"
+              className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-5 w-full sm:w-auto"
             >
               <a
                 href="#projects"
@@ -153,45 +120,45 @@ const contact = {
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
 
+              <a
+                href={PERSONAL_INFO.resumePath}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Rohit-Kumar-Resume.pdf"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-primary-cyan bg-primary-blue/15 hover:bg-primary-blue/25 border border-primary-blue/40 hover:border-primary-cyan rounded-xl transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer"
+                title="Download Resume PDF"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Download Resume</span>
+              </a>
+
               {onOpenResume && (
                 <button
                   type="button"
                   onClick={onOpenResume}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-primary-cyan bg-primary-blue/15 hover:bg-primary-blue/25 border border-primary-blue/40 hover:border-primary-cyan rounded-xl transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-3.5 py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-text-secondary hover:text-white bg-surface-elevated/90 hover:bg-surface-hover border border-border-subtle hover:border-white/30 rounded-xl transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer"
+                  title="Preview Resume in Browser"
                 >
-                  <Eye className="w-3.5 h-3.5" />
+                  <Eye className="w-3.5 h-3.5 text-primary-cyan" />
                   <span>Preview CV</span>
                 </button>
               )}
 
               <a
-                href={PERSONAL_INFO.resumePath}
-                download="Rohit-Kumar-Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contact"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold tracking-wide text-text-main bg-surface-elevated/90 hover:bg-surface-hover border border-border-subtle hover:border-primary-cyan/60 rounded-xl transition-all duration-300 shadow-md transform hover:-translate-y-0.5"
               >
-                <Download className="w-3.5 h-3.5 text-primary-cyan" />
-                <span>Resume PDF</span>
+                <span>Contact Me</span>
               </a>
             </motion.div>
 
-            {/* Verified Quick Contact Strip */}
+            {/* Quick Contact Links Strip */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.75, duration: 0.7 }}
-              className="flex flex-wrap items-center gap-2 sm:gap-3.5 pt-2.5 sm:pt-3 border-t border-border-subtle/60 text-[11px] sm:text-xs text-text-secondary font-mono"
+              className="flex flex-wrap items-center gap-3 pt-3 border-t border-border-subtle/60 text-xs text-text-secondary font-mono"
             >
-              <a
-                href={`mailto:${PERSONAL_INFO.email}`}
-                className="flex items-center gap-1.5 hover:text-primary-cyan transition-colors"
-                title="Email Rohit"
-              >
-                <Mail className="w-3.5 h-3.5 text-primary-blue" />
-                <span>{PERSONAL_INFO.email}</span>
-              </a>
-
               <a
                 href={PERSONAL_INFO.linkedin}
                 target="_blank"
@@ -202,6 +169,8 @@ const contact = {
                 <LinkedInIcon className="w-3.5 h-3.5 text-[#0A66C2]" />
                 <span>LinkedIn</span>
               </a>
+
+              <span className="text-border-subtle">•</span>
 
               <a
                 href={PERSONAL_INFO.github}
@@ -214,16 +183,19 @@ const contact = {
                 <span>GitHub</span>
               </a>
 
+              <span className="text-border-subtle">•</span>
+
               <a
-                href={PERSONAL_INFO.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
-                title="Chat on WhatsApp"
+                href={`mailto:${PERSONAL_INFO.email}`}
+                className="flex items-center gap-1.5 hover:text-primary-cyan transition-colors"
+                title="Email Rohit"
               >
-                <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-400" />
-                <span>WhatsApp</span>
+                <Mail className="w-3.5 h-3.5 text-primary-blue" />
+                <span className="hidden sm:inline">{PERSONAL_INFO.email}</span>
+                <span className="sm:hidden">Email</span>
               </a>
+
+              <span className="text-border-subtle">•</span>
 
               <a
                 href={`tel:${PERSONAL_INFO.phone}`}
@@ -233,55 +205,33 @@ const contact = {
                 <Phone className="w-3.5 h-3.5 text-primary-cyan" />
                 <span>{PERSONAL_INFO.phone}</span>
               </a>
-
-              <a
-                href={PERSONAL_INFO.vpnSite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-primary-violet transition-colors"
-                title="VPN Expert Guide"
-              >
-                <Globe className="w-3.5 h-3.5 text-primary-violet" />
-                <span>VPNExpertGuide.com</span>
-              </a>
             </motion.div>
           </motion.div>
 
-          {/* Right Hero Column: Authentic Profile with Cosmic Orbital System */}
+          {/* Right Hero Column: Authentic Profile Photo & EXACT "AVAILABLE FOR" Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-5 flex flex-col items-center justify-center relative mt-4 lg:mt-0"
           >
-            {/* Orbital Rings System */}
-            <div className="relative w-[230px] h-[230px] sm:w-[270px] sm:h-[270px] lg:w-[270px] lg:h-[270px] xl:w-[300px] xl:h-[300px] flex items-center justify-center">
+            {/* Orbital Halo & Profile Frame */}
+            <div className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] lg:w-[280px] lg:h-[280px] xl:w-[310px] xl:h-[310px] flex items-center justify-center">
               
-              {/* Outer Glow Halo */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-blue/20 via-primary-violet/20 to-primary-cyan/20 blur-2xl pointer-events-none" />
+              {/* Soft Animated Glow Halo */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-blue/25 via-primary-violet/20 to-primary-cyan/25 blur-2xl pointer-events-none animate-pulse" />
 
-              {/* Animated Orbital Ring 1 */}
+              {/* Animated Orbital Rings */}
               <div className="orbit-ring orbit-ring-1" />
-
-              {/* Animated Orbital Ring 2 */}
               <div className="orbit-ring orbit-ring-2" />
 
-              {/* Animated Orbital Ring 3 */}
-              <div className="orbit-ring orbit-ring-3" />
-
-              {/* Orbiting Satellite Particle */}
-              <div className="absolute w-full h-full animate-spin-slow pointer-events-none">
-                <div className="absolute top-2 left-1/2 w-2.5 h-2.5 rounded-full bg-primary-cyan shadow-[0_0_12px_#25D9FF]" />
-                <div className="absolute bottom-6 left-1/4 w-2 h-2 rounded-full bg-primary-violet shadow-[0_0_10px_#985CFF]" />
-              </div>
-
               {/* Central Portrait Frame */}
-              <div className="relative w-44 h-44 sm:w-52 sm:h-52 lg:w-52 lg:h-52 xl:w-56 xl:h-56 rounded-full p-1.5 sm:p-2 bg-gradient-to-b from-primary-cyan/50 via-primary-blue/30 to-primary-violet/50 shadow-[0_0_35px_rgba(56,119,255,0.35)]">
-                <div className="w-full h-full rounded-full overflow-hidden bg-[#080D18] relative border border-white/10 flex items-center justify-center">
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-56 lg:h-56 xl:w-60 xl:h-60 rounded-full p-2 bg-gradient-to-b from-primary-cyan/50 via-primary-blue/30 to-primary-violet/50 shadow-[0_0_35px_rgba(56,119,255,0.4)]">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[#080D18] relative border border-white/15 flex items-center justify-center shadow-inner">
                   {!imageError ? (
                     <img
                       src={PERSONAL_INFO.profileImage}
-                      alt="Rohit Kumar - Full-Stack Developer"
+                      alt="Rohit Kumar - Full Stack Developer"
                       onError={() => setImageError(true)}
                       className="w-full h-full object-cover object-top scale-105 hover:scale-110 transition-transform duration-700"
                       width="400"
@@ -296,173 +246,83 @@ const contact = {
                       </span>
                     </div>
                   )}
-                  {/* Subtle inner shadow & lighting vignette */}
+                  {/* Subtle lighting vignette */}
                   <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20 pointer-events-none bg-gradient-to-t from-[#030610]/60 via-transparent to-transparent" />
                 </div>
               </div>
 
               {/* Floating Badge 1: MERN FULL STACK */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -top-2 -left-3 sm:left-0 z-20 animate-float"
+                className="absolute -top-1 -left-2 sm:left-0 z-20 animate-float"
               >
                 <div className="glass-panel-elevated px-3 py-1.5 rounded-xl border border-primary-blue/40 shadow-glow-blue flex items-center gap-2">
                   <div className="w-6 h-6 rounded-lg bg-primary-blue/20 flex items-center justify-center border border-primary-blue/40 text-primary-cyan">
                     <Code2 className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <span className="block text-[9px] font-mono uppercase tracking-wider text-text-secondary">Core Architecture</span>
-                    <span className="block text-[11px] font-bold text-white tracking-wide">MERN FULL STACK</span>
+                    <span className="block text-[8px] font-mono uppercase tracking-wider text-text-secondary">Core Focus</span>
+                    <span className="block text-[10px] sm:text-[11px] font-bold text-white tracking-wide">MERN FULL STACK</span>
                   </div>
                 </div>
               </motion.div>
 
               {/* Floating Badge 2: WORDPRESS & SEO */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.9, duration: 0.6 }}
-                className="absolute -bottom-2 -right-3 sm:right-0 z-20 animate-float-delayed"
+                className="absolute -bottom-1 -right-2 sm:right-0 z-20 animate-float-delayed"
               >
                 <div className="glass-panel-elevated px-3 py-1.5 rounded-xl border border-primary-violet/40 shadow-glow-violet flex items-center gap-2">
                   <div className="w-6 h-6 rounded-lg bg-primary-violet/20 flex items-center justify-center border border-primary-violet/40 text-primary-violet">
                     <Sparkles className="w-3.5 h-3.5" />
                   </div>
                   <div>
-                    <span className="block text-[9px] font-mono uppercase tracking-wider text-text-secondary">Specialization</span>
-                    <span className="block text-[11px] font-bold text-white tracking-wide">WORDPRESS &amp; SEO</span>
+                    <span className="block text-[8px] font-mono uppercase tracking-wider text-text-secondary">Specialization</span>
+                    <span className="block text-[10px] sm:text-[11px] font-bold text-white tracking-wide">WORDPRESS &amp; SEO</span>
                   </div>
                 </div>
               </motion.div>
             </div>
 
-            {/* Interactive Cosmic Code Terminal Box */}
+            {/* EXACT REQUIRED "AVAILABLE FOR" CARD */}
             <motion.div
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.7 }}
-              className="mt-3 sm:mt-3.5 w-full max-w-sm lg:max-w-md glass-panel rounded-xl overflow-hidden border border-border-subtle shadow-xl"
+              transition={{ delay: 0.85, duration: 0.6 }}
+              className="w-full max-w-sm glass-panel-elevated p-4 sm:p-4.5 rounded-2xl border border-border-subtle mt-4 sm:mt-5 shadow-xl"
             >
-              {/* Terminal Title Bar & Tabs */}
-              <div className="bg-[#050914] px-3 py-1.5 border-b border-border-subtle flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="w-2 h-2 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-2 h-2 rounded-full bg-emerald-500/80 inline-block" />
-                  <Terminal className="w-3 h-3 text-primary-cyan ml-1 hidden sm:inline-block" />
-                </div>
-
-                <div className="flex items-center gap-1">
-                  <button
-                    type="button"
-                    onClick={() => setTerminalTab('config')}
-                    className={`px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono transition-colors ${
-                      terminalTab === 'config'
-                        ? 'bg-primary-blue/20 text-primary-cyan border border-primary-blue/40'
-                        : 'text-text-secondary hover:text-white'
-                    }`}
-                  >
-                    config.ts
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setTerminalTab('stack')}
-                    className={`px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono transition-colors ${
-                      terminalTab === 'stack'
-                        ? 'bg-primary-blue/20 text-primary-cyan border border-primary-blue/40'
-                        : 'text-text-secondary hover:text-white'
-                    }`}
-                  >
-                    stack.ts
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setTerminalTab('contact')}
-                    className={`px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-mono transition-colors ${
-                      terminalTab === 'contact'
-                        ? 'bg-primary-blue/20 text-primary-cyan border border-primary-blue/40'
-                        : 'text-text-secondary hover:text-white'
-                    }`}
-                  >
-                    contact.sh
-                  </button>
-                </div>
-
-                <button
-                  type="button"
-                  onClick={handleCopySnippet}
-                  className="text-[10px] sm:text-[11px] font-mono text-text-secondary hover:text-primary-cyan flex items-center gap-1 bg-surface-elevated hover:bg-surface-hover px-2 py-0.5 rounded border border-border-subtle transition-colors cursor-pointer"
-                  title="Copy code snippet"
-                >
-                  {copiedCode ? (
-                    <>
-                      <Check className="w-3 h-3 text-emerald-400" />
-                      <span className="text-emerald-400">Copied</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3" />
-                      <span>Copy</span>
-                    </>
-                  )}
-                </button>
+              <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border-subtle/70">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary-cyan">
+                  AVAILABLE FOR
+                </span>
+                <span className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Immediate
+                </span>
               </div>
 
-              {/* Terminal Code Body */}
-              <div className="p-2.5 sm:p-3 font-mono text-[11px] sm:text-xs leading-relaxed overflow-x-auto text-text-secondary bg-[#040712]/90">
-                {terminalTab === 'config' && (
-                  <div>
-                    <p>
-                      <span className="text-primary-violet font-semibold">const</span>{' '}
-                      <span className="text-primary-cyan">developer</span> = &#123;
-                    </p>
-                    <p className="pl-3.5">
-                      <span className="text-text-main">name</span>: <span className="text-emerald-400">"{PERSONAL_INFO.name}"</span>,
-                    </p>
-                    <p className="pl-3.5">
-                      <span className="text-text-main">stack</span>: <span className="text-emerald-400">"MERN + TypeScript"</span>,
-                    </p>
-                    <p className="pl-3.5">
-                      <span className="text-text-main">focus</span>: <span className="text-emerald-400">"Scalable Web Platforms"</span>,
-                    </p>
-                    <p className="pl-3.5">
-                      <span className="text-text-main">status</span>: <span className="text-emerald-400">"Available Immediately"</span>
-                    </p>
-                    <p>&#125;;</p>
-                  </div>
-                )}
+              <div className="space-y-2">
+                {/* 1. Full Stack Development */}
+                <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-surface border border-border-subtle text-text-main font-medium text-xs">
+                  <Check className="w-3.5 h-3.5 text-primary-cyan shrink-0" strokeWidth={2.2} />
+                  <span>Full Stack Development</span>
+                </div>
 
-                {terminalTab === 'stack' && (
-                  <div>
-                    <p className="text-text-muted mb-0.5">// Core Technical Ecosystem</p>
-                    <p>
-                      <span className="text-primary-violet font-semibold">export const</span>{' '}
-                      <span className="text-primary-cyan">coreStack</span> = [
-                    </p>
-                    <p className="pl-3.5 text-emerald-400">"React.js", "TypeScript", "Node.js",</p>
-                    <p className="pl-3.5 text-emerald-400">"Express.js", "MongoDB", "Tailwind CSS",</p>
-                    <p className="pl-3.5 text-emerald-400">"REST APIs", "AI Integrations"</p>
-                    <p>];</p>
-                  </div>
-                )}
+                {/* 2. WordPress - SEO */}
+                <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-surface border border-border-subtle text-text-main font-medium text-xs">
+                  <Check className="w-3.5 h-3.5 text-primary-violet shrink-0" strokeWidth={2.2} />
+                  <span>WordPress - SEO</span>
+                </div>
 
-                {terminalTab === 'contact' && (
-                  <div>
-                    <p className="text-text-muted mb-0.5">#!/bin/bash — Direct Handshake</p>
-                    <p className="text-text-main">
-                      <span className="text-primary-cyan">curl</span> -X POST https://rohitkumar.dev/api/contact \
-                    </p>
-                    <p className="pl-3.5 text-text-secondary">
-                      -H <span className="text-emerald-400">"Content-Type: application/json"</span> \
-                    </p>
-                    <p className="pl-3.5 text-text-secondary">
-                      -d '{`{"email": "${PERSONAL_INFO.email}"}`}'
-                    </p>
-                    <p className="text-emerald-400 mt-0.5"># Ready to collaborate!</p>
-                  </div>
-                )}
+                {/* 3. Digital Marketing */}
+                <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-surface border border-border-subtle text-text-main font-medium text-xs">
+                  <Check className="w-3.5 h-3.5 text-text-muted shrink-0" strokeWidth={2.2} />
+                  <span>Digital Marketing</span>
+                </div>
               </div>
             </motion.div>
 
@@ -471,20 +331,22 @@ const contact = {
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
+      {/* Scroll To Explore Indicator (Compact & Subtle) */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="mt-1.5 sm:mt-2 mb-1 flex flex-col items-center gap-1 text-text-secondary hover:text-white transition-colors shrink-0"
+        initial={{ opacity: 0, y: -6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className="mt-4 sm:mt-5 z-20 flex flex-col items-center"
       >
         <a
-          href="#tech-strip"
-          className="flex flex-col items-center gap-1 text-[10px] sm:text-[11px] font-mono uppercase tracking-widest"
+          href="#about"
+          className="group flex flex-col items-center gap-0.5 cursor-pointer select-none"
           aria-label="Scroll to explore"
         >
-          <span className="text-primary-cyan tracking-widest">Scroll To Explore</span>
-          <ChevronDown className="w-3.5 h-3.5 text-primary-blue animate-bounce" />
+          <span className="font-mono text-[9.5px] sm:text-[10px] tracking-[0.2em] text-[#25D9FF] font-semibold uppercase drop-shadow-[0_0_6px_rgba(37,217,255,0.35)] group-hover:text-white transition-colors">
+            SCROLL TO EXPLORE
+          </span>
+          <ChevronDown className="w-3 h-3 text-[#3877FF] group-hover:text-[#25D9FF] animate-bounce transition-colors" strokeWidth={2.2} />
         </a>
       </motion.div>
     </section>

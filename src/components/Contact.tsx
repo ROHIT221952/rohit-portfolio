@@ -10,18 +10,30 @@ import {
   Copy,
   Check,
   Loader2,
-  ExternalLink
+  ExternalLink,
+  User,
+  ChevronDown
 } from 'lucide-react';
-import { GithubIcon, LinkedInIcon, WhatsAppIcon } from './BrandIcons';
+import { GithubIcon, LinkedInIcon } from './BrandIcons';
 import confetti from 'canvas-confetti';
-import { PERSONAL_INFO, QUICK_CONTACT_SUBJECTS } from '../data/portfolioData';
+import { PERSONAL_INFO } from '../data/portfolioData';
 import { NetworkSphere } from './NetworkSphere';
+
+const INTERESTED_IN_OPTIONS = [
+  "Full Stack Development",
+  "Frontend Development",
+  "Python Development",
+  "WordPress Development",
+  "SEO",
+  "Digital Marketing",
+  "Other"
+];
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
+    interestedIn: 'Full Stack Development',
     message: ''
   });
 
@@ -35,7 +47,7 @@ export const Contact: React.FC = () => {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
@@ -43,34 +55,36 @@ export const Contact: React.FC = () => {
     if (statusMessage) setStatusMessage(null);
   };
 
-  const handleSubjectSelect = (subj: string) => {
-    setFormData(prev => ({
-      ...prev,
-      subject: subj
-    }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setStatusMessage(null);
 
-    // Validation
+    // Required & Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
       setStatusMessage({
         type: 'error',
-        text: 'Please fill in all required fields (Name, Email, Message).'
+        text: 'Please fill in all required fields (Your Name, Email, and Message).'
       });
       setIsSubmitting(false);
       return;
     }
 
+    if (!emailRegex.test(formData.email.trim())) {
+      setStatusMessage({
+        type: 'error',
+        text: 'Please enter a valid email address.'
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Isolated Submission Function / API Point
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -78,7 +92,7 @@ export const Contact: React.FC = () => {
       try {
         data = await response.json();
       } catch {
-        // Non-JSON response (e.g. 404 HTML on static host)
+        // Static host without Express server
       }
 
       if (response.ok && data?.success) {
@@ -86,22 +100,15 @@ export const Contact: React.FC = () => {
           type: 'success',
           text: data.message || 'Message sent successfully! Rohit will reach out shortly.'
         });
-        setFormData({ name: '', email: '', subject: '', message: '' });
-        
-        // Trigger celebratory confetti
+        setFormData({ name: '', email: '', interestedIn: 'Full Stack Development', message: '' });
         confetti({
           particleCount: 80,
           spread: 70,
           origin: { y: 0.7 },
           colors: ['#3877FF', '#25D9FF', '#985CFF', '#34d399']
         });
-      } else if (response.status === 400 || response.status === 429) {
-        setStatusMessage({
-          type: 'error',
-          text: data?.message || 'Invalid input or request limit exceeded. Please verify your details.'
-        });
       } else {
-        // Fallback for static hosts where Express backend isn't mounted
+        // Fallback for static hosts (store message locally & offer direct mail link)
         try {
           const unsent = JSON.parse(localStorage.getItem('rk_contact_messages') || '[]');
           unsent.push({ ...formData, sentAt: new Date().toISOString() });
@@ -120,10 +127,10 @@ export const Contact: React.FC = () => {
         });
       }
     } catch {
-      // Offline or network error fallback
+      // Offline / fallback handling
       setStatusMessage({
         type: 'success',
-        text: 'Thank you! Your message was saved locally. Click below to launch your email client:',
+        text: 'Thank you! Your message was saved. Click below to launch your email client:',
         showMailtoFallback: true
       });
       confetti({
@@ -136,17 +143,17 @@ export const Contact: React.FC = () => {
     }
   };
 
-  const mailtoLink = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Hi Rohit,\n\n${formData.message}\n\nFrom: ${formData.name} (${formData.email})`)}`;
+  const mailtoLink = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.interestedIn + ' Inquiry')}&body=${encodeURIComponent(`Hi Rohit,\n\n${formData.message}\n\nFrom: ${formData.name} (${formData.email})`)}`;
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 bg-[#040814] cosmic-grid overflow-hidden">
-      {/* Background Glow */}
+    <section id="contact" className="relative py-20 sm:py-28 bg-[#040814] cosmic-grid overflow-hidden">
+      {/* Background Ambient Glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary-blue/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-[1440px] xl:max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -158,30 +165,33 @@ export const Contact: React.FC = () => {
             07 — LET'S CONNECT
           </motion.div>
 
+          {/* Heading: LET'S BUILD SOMETHING GREAT. */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-white mb-4"
+            className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-white mb-3"
           >
-            Let’s Build Something <span className="gradient-text-blue-cyan uppercase">Great.</span>
+            LET'S BUILD SOMETHING GREAT.
           </motion.h2>
 
+          {/* Supporting Text with Developer roles first: Full Stack, Frontend, Python, Digital Marketing, WordPress, SEO */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-text-secondary text-base max-w-2xl"
+            className="text-text-secondary text-xs sm:text-sm md:text-base max-w-2xl leading-relaxed"
           >
-            Available for full-time Full-Stack Developer, WordPress engineering, and Technical SEO &amp; Digital Marketing opportunities.
+            Rohit is open to opportunities in <strong>Full Stack Development</strong>, <strong>Frontend Development</strong>, and <strong>Python Development</strong>, alongside high-impact <strong>Digital Marketing</strong>, <strong>WordPress</strong>, and <strong>SEO</strong> strategies.
           </motion.p>
         </div>
 
+        {/* Two-Column Contact Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
-          {/* Left Column: Direct Contact Info & Network Sphere */}
+          {/* LEFT: Get In Touch + Quick Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -189,34 +199,48 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-5 h-full flex flex-col"
           >
-            <div className="glass-panel-elevated p-7 sm:p-8 rounded-2xl border border-border-subtle shadow-xl relative overflow-hidden h-full flex flex-col justify-between">
+            <div className="glass-panel-elevated p-6 sm:p-8 rounded-2xl border border-border-subtle shadow-xl relative overflow-hidden h-full flex flex-col justify-between">
               <div>
-                {/* 3D Interactive Constellation Network Sphere */}
+                {/* 3D Network Sphere */}
                 <div className="w-full mb-3 flex items-center justify-center">
-                  <NetworkSphere className="w-44 h-44 sm:w-48 sm:h-48 aspect-square" />
+                  <NetworkSphere className="w-40 h-40 sm:w-44 sm:h-44 aspect-square" />
                 </div>
 
-                <h3 className="font-heading font-bold text-xl text-white mb-1.5">
-                  Direct Contact Channels
+                <h3 className="font-heading font-extrabold text-xl text-white mb-1.5">
+                  Get In Touch
                 </h3>
                 <p className="text-xs sm:text-sm text-text-secondary mb-5 leading-relaxed">
-                  Feel free to email, call, WhatsApp, or connect on LinkedIn. I typically respond within 24 hours.
+                  Have an open role, engineering project, or growth challenge? Feel free to reach out directly through any of the channels below.
                 </p>
 
+                {/* EXACT QUICK INFO STRUCTURE */}
                 <div className="space-y-2.5 font-mono text-xs sm:text-sm">
-                  {/* Email Item */}
+                  
+                  {/* 1. Full Name */}
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle text-text-main">
+                    <User className="w-4 h-4 text-primary-cyan shrink-0" />
+                    <div>
+                      <span className="text-[10px] text-text-muted block uppercase">Full Name</span>
+                      <span className="font-semibold text-white">{PERSONAL_INFO.name}</span>
+                    </div>
+                  </div>
+
+                  {/* 2. Email */}
                   <div className="flex items-center justify-between p-3 rounded-xl bg-surface border border-border-subtle hover:border-primary-blue/40 transition-colors">
                     <a
                       href={`mailto:${PERSONAL_INFO.email}`}
                       className="flex items-center gap-3 text-text-secondary hover:text-white truncate"
                     >
                       <Mail className="w-4 h-4 text-primary-blue shrink-0" />
-                      <span className="truncate">{PERSONAL_INFO.email}</span>
+                      <div>
+                        <span className="text-[10px] text-text-muted block uppercase">Email</span>
+                        <span className="truncate">{PERSONAL_INFO.email}</span>
+                      </div>
                     </a>
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="p-1.5 rounded-lg bg-surface-elevated hover:bg-surface-hover text-text-secondary hover:text-primary-cyan transition-colors"
+                      className="p-1.5 rounded-lg bg-surface-elevated hover:bg-surface-hover text-text-secondary hover:text-primary-cyan transition-colors cursor-pointer"
                       title="Copy Email"
                       aria-label="Copy Email"
                     >
@@ -224,7 +248,28 @@ export const Contact: React.FC = () => {
                     </button>
                   </div>
 
-                  {/* LinkedIn Item */}
+                  {/* 3. Phone */}
+                  <a
+                    href={`tel:${PERSONAL_INFO.phone}`}
+                    className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle hover:border-primary-cyan/40 text-text-secondary hover:text-white transition-colors"
+                  >
+                    <Phone className="w-4 h-4 text-primary-cyan shrink-0" />
+                    <div>
+                      <span className="text-[10px] text-text-muted block uppercase">Phone</span>
+                      <span>{PERSONAL_INFO.phone}</span>
+                    </div>
+                  </a>
+
+                  {/* 4. Location */}
+                  <div className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle text-text-secondary">
+                    <MapPin className="w-4 h-4 text-primary-violet shrink-0" />
+                    <div>
+                      <span className="text-[10px] text-text-muted block uppercase">Location</span>
+                      <span>{PERSONAL_INFO.location}</span>
+                    </div>
+                  </div>
+
+                  {/* 5. LinkedIn (BEFORE GitHub) */}
                   <a
                     href={PERSONAL_INFO.linkedin}
                     target="_blank"
@@ -233,41 +278,15 @@ export const Contact: React.FC = () => {
                   >
                     <div className="flex items-center gap-3">
                       <LinkedInIcon className="w-4 h-4 text-[#0A66C2] shrink-0" />
-                      <span>linkedin.com/in/rohitkumar-dev</span>
+                      <div>
+                        <span className="text-[10px] text-text-muted block uppercase">LinkedIn</span>
+                        <span>linkedin.com/in/rohitkumar88966</span>
+                      </div>
                     </div>
                     <ExternalLink className="w-3.5 h-3.5 text-text-muted" />
                   </a>
 
-                  {/* WhatsApp Item */}
-                  <a
-                    href={PERSONAL_INFO.whatsapp}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-surface border border-border-subtle hover:border-emerald-500/60 text-text-secondary hover:text-white transition-colors"
-                  >
-                    <div className="flex items-center gap-3">
-                      <WhatsAppIcon className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>WhatsApp Quick Chat</span>
-                    </div>
-                    <span className="text-[11px] text-emerald-400 font-semibold">Online</span>
-                  </a>
-
-                  {/* Phone Item */}
-                  <a
-                    href={`tel:${PERSONAL_INFO.phone}`}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle hover:border-primary-cyan/40 text-text-secondary hover:text-white transition-colors"
-                  >
-                    <Phone className="w-4 h-4 text-primary-cyan shrink-0" />
-                    <span>{PERSONAL_INFO.phone}</span>
-                  </a>
-
-                  {/* Location */}
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle text-text-secondary">
-                    <MapPin className="w-4 h-4 text-primary-violet shrink-0" />
-                    <span>{PERSONAL_INFO.location}</span>
-                  </div>
-
-                  {/* GitHub */}
+                  {/* 6. GitHub */}
                   <a
                     href={PERSONAL_INFO.github}
                     target="_blank"
@@ -276,16 +295,20 @@ export const Contact: React.FC = () => {
                   >
                     <div className="flex items-center gap-3">
                       <GithubIcon className="w-4 h-4 text-white shrink-0" />
-                      <span>github.com/{PERSONAL_INFO.githubUsername}</span>
+                      <div>
+                        <span className="text-[10px] text-text-muted block uppercase">GitHub</span>
+                        <span>github.com/{PERSONAL_INFO.githubUsername}</span>
+                      </div>
                     </div>
                     <ExternalLink className="w-3.5 h-3.5 text-text-muted" />
                   </a>
+
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Working Glassmorphism Contact Form */}
+          {/* RIGHT: Send a Message Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -293,13 +316,13 @@ export const Contact: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7 h-full flex flex-col"
           >
-            <div className="glass-panel-elevated p-7 sm:p-8 rounded-2xl border border-border-subtle shadow-2xl relative h-full flex flex-col justify-between">
+            <div className="glass-panel-elevated p-6 sm:p-8 rounded-2xl border border-border-subtle shadow-2xl relative h-full flex flex-col justify-between">
               <div>
-                <h3 className="font-heading font-bold text-xl sm:text-2xl text-white mb-1.5">
+                <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white mb-1.5">
                   Send a Message
                 </h3>
                 <p className="text-xs sm:text-sm text-text-secondary mb-4">
-                  Have a job opening, freelance inquiry, or technical question? Submit the form below.
+                  Please complete the form below. I will respond to your inquiry promptly.
                 </p>
 
                 {statusMessage && (
@@ -335,8 +358,11 @@ export const Contact: React.FC = () => {
                 )}
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-3.5 flex-1 flex flex-col justify-between">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {/* Form with required inputs and dropdown */}
+              <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-between">
+                
+                {/* Name & Email Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="name" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary mb-1">
                       Your Name *
@@ -355,7 +381,7 @@ export const Contact: React.FC = () => {
 
                   <div>
                     <label htmlFor="email" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary mb-1">
-                      Email Address *
+                      Your Email *
                     </label>
                     <input
                       type="email"
@@ -370,44 +396,31 @@ export const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Subject Field & Quick Prefill Chips */}
+                {/* Interested In * Dropdown */}
                 <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <label htmlFor="subject" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary">
-                      Subject / Opportunity
-                    </label>
-                    <span className="text-[10px] text-text-muted font-mono">Click to prefill:</span>
+                  <label htmlFor="interestedIn" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary mb-1">
+                    Interested In *
+                  </label>
+                  <div className="relative">
+                    <select
+                      id="interestedIn"
+                      name="interestedIn"
+                      required
+                      value={formData.interestedIn}
+                      onChange={handleChange}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-violet focus:ring-1 focus:ring-primary-violet text-xs sm:text-sm text-white transition-all outline-none appearance-none cursor-pointer"
+                    >
+                      {INTERESTED_IN_OPTIONS.map((opt) => (
+                        <option key={opt} value={opt} className="bg-[#080D18] text-white">
+                          {opt}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="w-4 h-4 text-text-muted absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   </div>
-
-                  {/* Subject Chips */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    {QUICK_CONTACT_SUBJECTS.map((subj) => (
-                      <button
-                        key={subj}
-                        type="button"
-                        onClick={() => handleSubjectSelect(subj)}
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded-md border transition-colors cursor-pointer ${
-                          formData.subject === subj
-                            ? 'bg-primary-blue/30 text-primary-cyan border-primary-cyan/60 font-semibold'
-                            : 'bg-surface border-border-subtle text-text-secondary hover:text-white hover:border-border-glow'
-                        }`}
-                      >
-                        {subj}
-                      </button>
-                    ))}
-                  </div>
-
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="e.g. MERN Stack Developer Opportunity"
-                    className="w-full px-3.5 py-2 rounded-xl bg-surface border border-border-subtle focus:border-primary-violet focus:ring-1 focus:ring-primary-violet text-xs sm:text-sm text-white placeholder-text-muted transition-all outline-none"
-                  />
                 </div>
 
+                {/* Message * */}
                 <div className="flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-1">
                     <label htmlFor="message" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary">
@@ -421,14 +434,15 @@ export const Contact: React.FC = () => {
                     id="message"
                     name="message"
                     required
-                    rows={3}
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Write your project requirements, job description, or message..."
-                    className="w-full flex-1 min-h-[85px] px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-blue focus:ring-1 focus:ring-primary-blue text-xs sm:text-sm text-white placeholder-text-muted transition-all outline-none resize-none"
+                    placeholder="Describe your project, role opening, or technical requirements..."
+                    className="w-full flex-1 min-h-[90px] px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-blue focus:ring-1 focus:ring-primary-blue text-xs sm:text-sm text-white placeholder-text-muted transition-all outline-none resize-none"
                   />
                 </div>
 
+                {/* SEND MESSAGE Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -442,7 +456,7 @@ export const Contact: React.FC = () => {
                   ) : (
                     <>
                       <Send className="w-4 h-4" />
-                      <span>Send Message</span>
+                      <span>SEND MESSAGE</span>
                     </>
                   )}
                 </button>

@@ -55,10 +55,12 @@ export interface SkillCategory {
 
 export interface SkillItem {
   name: string;
-  category: 'frontend' | 'backend' | 'database' | 'tools' | 'cms_seo';
+  category: 'development' | 'cms_seo' | 'digital_marketing' | 'tools';
+  subgroup?: 'frontend' | 'backend' | 'database' | 'programming' | 'tools' | 'cms_seo' | 'digital_marketing';
   level: string;
   iconName: string;
   glowColor: string;
+  isToolOrAnalytics?: boolean;
 }
 
 export interface StatItem {

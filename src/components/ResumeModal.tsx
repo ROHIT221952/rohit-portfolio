@@ -42,7 +42,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   Rohit Kumar — Curriculum Vitae
                 </h3>
                 <p className="text-[11px] font-mono text-text-secondary">
-                  Full-Stack Developer | WordPress Expert | Technical SEO &amp; Digital Marketer
+                  MERN Stack Foundations | Full Stack Developer
                 </p>
               </div>
             </div>

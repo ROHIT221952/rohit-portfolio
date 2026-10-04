@@ -2,26 +2,34 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Code2,
-  ShieldCheck,
+  Globe,
+  ArrowRight,
+  CheckCircle2,
+  BookOpen,
   Sparkles,
-  Gauge,
-  GraduationCap,
-  Globe2,
-  CheckCircle,
-  ArrowRight
+  Compass
 } from 'lucide-react';
-import { PERSONAL_INFO, ABOUT_CARDS } from '../data/portfolioData';
+import { HOBBIES } from '../data/portfolioData';
 
-const iconMap: Record<string, React.ElementType> = {
-  Code2,
-  ShieldCheck,
+const hobbyIcons: Record<string, React.ElementType> = {
+  BookOpen,
   Sparkles,
-  Gauge
+  Compass
 };
 
 export const About: React.FC = () => {
+  const handleScrollToSection = (targetId: string, categoryFilter?: string) => {
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+    if (categoryFilter) {
+      window.dispatchEvent(new CustomEvent('filter-skills-category', { detail: categoryFilter }));
+    }
+  };
+
   return (
-    <section id="about" className="relative py-24 sm:py-32 bg-background cosmic-grid overflow-hidden">
+    <section id="about" className="relative py-16 sm:py-24 bg-background cosmic-grid overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary-violet/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-96 h-96 bg-primary-blue/10 rounded-full blur-[140px] pointer-events-none" />
@@ -29,7 +37,7 @@ export const About: React.FC = () => {
       <div className="max-w-[1440px] xl:max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +46,7 @@ export const About: React.FC = () => {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-blue/10 border border-primary-blue/30 text-xs font-mono text-primary-cyan tracking-wider uppercase mb-3"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-cyan" />
-            01 — ABOUT ME
+            01 — OVERVIEW
           </motion.div>
 
           <motion.h2
@@ -46,150 +54,168 @@ export const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-white max-w-3xl"
+            className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight text-white"
           >
-            {PERSONAL_INFO.aboutHeadline}
+            PROFESSIONAL SUMMARY
           </motion.h2>
         </div>
 
-        {/* Top Split: Professional Bio & Highlights */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16">
+        {/* TWO EQUAL-WIDTH BALANCED PREMIUM CARDS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch mb-14">
           
-          {/* Bio Column */}
+          {/* CARD 1: FULL STACK DEVELOPMENT */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 glass-panel-elevated p-7 sm:p-8 rounded-2xl border border-border-subtle shadow-xl flex flex-col justify-between h-full"
+            className="glass-panel-elevated p-6 sm:p-8 rounded-2xl border border-border-subtle hover:border-primary-blue/50 transition-all duration-300 shadow-xl flex flex-col justify-between h-full group"
           >
             <div>
-              <h3 className="text-xl sm:text-2xl font-heading font-bold text-white mb-3 flex items-center gap-2.5">
-                <span className="w-2 h-6 bg-gradient-to-b from-primary-cyan to-primary-blue rounded-full inline-block" />
-                Full-Stack Engineer &amp; Digital Growth Specialist
-              </h3>
-              <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-5">
-                {PERSONAL_INFO.aboutBio}
-              </p>
-            </div>
-
-            <div className="space-y-3.5 pt-5 border-t border-border-subtle/80">
-              {/* Secondary Note for WordPress/SEO */}
-              <div className="flex items-start gap-3 bg-surface/80 p-3.5 rounded-xl border border-primary-violet/20">
-                <Globe2 className="w-5 h-5 text-primary-violet shrink-0 mt-0.5" />
-                <p className="text-xs sm:text-sm text-text-secondary font-medium">
-                  {PERSONAL_INFO.secondaryNote}
-                </p>
+              {/* Card Header & Icon */}
+              <div className="flex items-center gap-3.5 mb-4 pb-3 border-b border-border-subtle/70">
+                <div className="w-11 h-11 rounded-xl bg-primary-blue/15 border border-primary-blue/40 flex items-center justify-center text-primary-cyan shadow-glow-blue shrink-0">
+                  <Code2 className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-primary-cyan block">
+                    Core Engineering
+                  </span>
+                  <h3 className="font-heading font-extrabold text-lg sm:text-xl text-white group-hover:text-primary-cyan transition-colors">
+                    FULL STACK DEVELOPMENT
+                  </h3>
+                </div>
               </div>
 
-              {/* Education Highlight */}
-              <div className="flex items-start gap-3 bg-surface/80 p-3.5 rounded-xl border border-primary-blue/20">
-                <GraduationCap className="w-5 h-5 text-primary-cyan shrink-0 mt-0.5" />
-                <p className="text-xs sm:text-sm text-text-secondary font-medium">
-                  {PERSONAL_INFO.educationNote}
-                </p>
-              </div>
+              {/* Concise Bullet Highlights */}
+              <ul className="space-y-2.5 text-xs sm:text-sm text-text-secondary mb-6 leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-cyan shrink-0 mt-0.5" />
+                  <span><strong>MERN Stack Architecture:</strong> Robust apps built with MongoDB, Express.js, React.js, and Node.js.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-cyan shrink-0 mt-0.5" />
+                  <span><strong>Modern Frameworks:</strong> React.js, Next.js, and Redux Toolkit for structured global state.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-cyan shrink-0 mt-0.5" />
+                  <span><strong>API Engineering &amp; Auth:</strong> Secure RESTful endpoints with JWT tokens and protected routing.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-cyan shrink-0 mt-0.5" />
+                  <span><strong>Responsive UI Development:</strong> Pixel-perfect styling using Tailwind CSS, Bootstrap, and HTML5/CSS3.</span>
+                </li>
+              </ul>
             </div>
 
-            <div className="mt-6 flex flex-wrap gap-4">
-              <a
-                href="#skills"
-                className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-primary-cyan hover:text-white transition-colors"
+            {/* Aligned Action Button */}
+            <div className="pt-4 border-t border-border-subtle/60">
+              <button
+                type="button"
+                onClick={() => handleScrollToSection('skills', 'development')}
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-white bg-primary-blue/20 hover:bg-primary-blue/35 border border-primary-blue/40 hover:border-primary-cyan transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer"
               >
-                <span>Explore Technical Stack</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
+                <span>Explore Development</span>
+                <ArrowRight className="w-4 h-4 text-primary-cyan" />
+              </button>
             </div>
           </motion.div>
 
-          {/* Core Values Summary Column */}
+          {/* CARD 2: DIGITAL MARKETING & SEO */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 flex flex-col gap-4 h-full"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="glass-panel-elevated p-6 sm:p-8 rounded-2xl border border-border-subtle hover:border-primary-violet/50 transition-all duration-300 shadow-xl flex flex-col justify-between h-full group"
           >
-            <div className="glass-panel p-5 sm:p-6 rounded-2xl border border-border-subtle flex items-center gap-4 flex-1 hover:border-primary-blue/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-primary-blue/20 flex items-center justify-center border border-primary-blue/40 text-primary-cyan shrink-0">
-                <CheckCircle className="w-5 h-5" />
+            <div>
+              {/* Card Header & Icon */}
+              <div className="flex items-center gap-3.5 mb-4 pb-3 border-b border-border-subtle/70">
+                <div className="w-11 h-11 rounded-xl bg-primary-violet/15 border border-primary-violet/40 flex items-center justify-center text-primary-violet shadow-glow-violet shrink-0">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-widest text-primary-violet block">
+                    Digital Visibility &amp; Growth
+                  </span>
+                  <h3 className="font-heading font-extrabold text-lg sm:text-xl text-white group-hover:text-primary-violet transition-colors">
+                    DIGITAL MARKETING &amp; SEO
+                  </h3>
+                </div>
               </div>
-              <div>
-                <h4 className="text-white font-heading font-bold text-base mb-1">Production-Driven Mindset</h4>
-                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                  Building applications with clear folder architecture, clean environment management, and tested end-to-end user flows.
-                </p>
-              </div>
+
+              {/* Concise Bullet Highlights */}
+              <ul className="space-y-2.5 text-xs sm:text-sm text-text-secondary mb-6 leading-relaxed">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-violet shrink-0 mt-0.5" />
+                  <span><strong>WordPress Website Management:</strong> End-to-end CMS setup, Elementor, Astra, and custom CSS.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-violet shrink-0 mt-0.5" />
+                  <span><strong>Technical &amp; On-Page SEO:</strong> Keyword research, content hierarchy, schema markup, and internal linking.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-violet shrink-0 mt-0.5" />
+                  <span><strong>Website Performance:</strong> Core Web Vitals tuning, caching strategies, and speed optimization.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-primary-violet shrink-0 mt-0.5" />
+                  <span><strong>Telemetry &amp; Analytics:</strong> Search indexing, traffic monitoring via Google Analytics &amp; Search Console.</span>
+                </li>
+              </ul>
             </div>
 
-            <div className="glass-panel p-5 sm:p-6 rounded-2xl border border-border-subtle flex items-center gap-4 flex-1 hover:border-primary-violet/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-primary-violet/20 flex items-center justify-center border border-primary-violet/40 text-primary-violet shrink-0">
-                <CheckCircle className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-white font-heading font-bold text-base mb-1">API Security & Validation</h4>
-                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                  Strict JWT authorization, encrypted secrets, MongoDB query sanitization, and structured HTTP error responses.
-                </p>
-              </div>
-            </div>
-
-            <div className="glass-panel p-5 sm:p-6 rounded-2xl border border-border-subtle flex items-center gap-4 flex-1 hover:border-primary-cyan/40 transition-colors">
-              <div className="w-10 h-10 rounded-xl bg-primary-cyan/20 flex items-center justify-center border border-primary-cyan/40 text-primary-cyan shrink-0">
-                <CheckCircle className="w-5 h-5" />
-              </div>
-              <div>
-                <h4 className="text-white font-heading font-bold text-base mb-1">Modern AI Model Integration</h4>
-                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                  Integrating OpenAI & Google Gemini APIs with token quotas and responsive streaming feedback.
-                </p>
-              </div>
+            {/* Aligned Action Button */}
+            <div className="pt-4 border-t border-border-subtle/60">
+              <button
+                type="button"
+                onClick={() => handleScrollToSection('skills', 'cms_seo')}
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-heading font-bold uppercase tracking-wider text-white bg-primary-violet/20 hover:bg-primary-violet/35 border border-primary-violet/40 hover:border-primary-violet transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer"
+              >
+                <span>Explore Digital Marketing</span>
+                <ArrowRight className="w-4 h-4 text-primary-violet" />
+              </button>
             </div>
           </motion.div>
 
         </div>
 
-        {/* 4 Detailed Expertise Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {ABOUT_CARDS.map((card, index) => {
-            const IconComponent = iconMap[card.icon] || Code2;
-            return (
-              <motion.div
-                key={card.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="glass-panel-elevated p-6 rounded-2xl border border-border-subtle hover:border-primary-blue/50 transition-all duration-300 shadow-lg group relative overflow-hidden"
-              >
-                {/* Subtle top indicator bar */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-1 opacity-80 group-hover:opacity-100 transition-opacity"
-                  style={{ backgroundColor: card.color }}
-                />
+        {/* HOBBIES SECTION (EXACTLY 3 EQUAL-WIDTH CARDS) */}
+        <div>
+          <div className="text-center mb-5">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-text-muted">
+              Personal Interests &amp; Habits
+            </span>
+          </div>
 
-                <div
-                  className="w-12 h-12 rounded-xl mb-5 flex items-center justify-center border transition-all duration-300"
-                  style={{
-                    backgroundColor: `${card.color}15`,
-                    borderColor: `${card.color}40`,
-                    color: card.color
-                  }}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {HOBBIES.map((hobby, idx) => {
+              const IconComp = hobbyIcons[hobby.iconName] || Sparkles;
+              return (
+                <motion.div
+                  key={hobby.title}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                  className="glass-panel p-4 sm:p-5 rounded-xl border border-border-subtle flex items-center gap-3.5 hover:border-primary-blue/40 transition-colors h-full"
                 >
-                  <IconComponent className="w-6 h-6" />
-                </div>
-
-                <h4 className="text-white font-heading font-bold text-lg mb-2.5 group-hover:text-primary-cyan transition-colors">
-                  {card.title}
-                </h4>
-
-                <p className="text-text-secondary text-xs sm:text-sm leading-relaxed">
-                  {card.description}
-                </p>
-              </motion.div>
-            );
-          })}
+                  <div className="w-10 h-10 rounded-xl bg-primary-blue/15 border border-primary-blue/30 flex items-center justify-center text-primary-cyan shrink-0">
+                    <IconComp className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-heading font-semibold text-sm">
+                      {hobby.title}
+                    </h4>
+                    <p className="text-[11px] font-mono text-text-secondary mt-0.5">
+                      {hobby.subtitle}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
 
       </div>
