@@ -18,8 +18,8 @@ export const PERSONAL_INFO = {
   githubUsername: "rohit221952",
   linkedin: "https://www.linkedin.com/in/rohitkumar88966/",
   vpnSite: "https://vpnexpertguide.com",
-  resumePath: "/Rohit-Kumar-Resume.pdf",
-  profileImage: "/assets/rohit-kumar.jpg"
+  resumePath: "./Rohit-Kumar-Resume.pdf",
+  profileImage: "./assets/rohit-kumar.jpg"
 };
 
 export const QUICK_CONTACT_SUBJECTS = [

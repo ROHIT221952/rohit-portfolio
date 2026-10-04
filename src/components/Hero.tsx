@@ -10,9 +10,11 @@ import {
   Check,
   Sparkles,
   Eye,
-  ChevronDown
+  ChevronDown,
+  Layers,
+  TrendingUp
 } from 'lucide-react';
-import { GithubIcon, LinkedInIcon } from './BrandIcons';
+import { GithubIcon, LinkedInIcon, WordPressIcon } from './BrandIcons';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -25,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-20 pb-12 sm:pt-24 sm:pb-16 flex flex-col justify-center items-center overflow-hidden cosmic-grid"
+      className="relative min-h-screen pt-14 pb-3 sm:pt-16 sm:pb-4 flex flex-col justify-center items-center overflow-hidden cosmic-grid"
     >
       {/* Background Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[850px] h-[600px] md:h-[850px] bg-gradient-radial from-primary-blue/15 via-primary-violet/8 to-transparent rounded-full pointer-events-none blur-3xl" />
@@ -210,117 +212,183 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
           {/* Right Hero Column: Authentic Profile Photo & EXACT "AVAILABLE FOR" Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-4 lg:mt-0"
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-5 lg:mt-7"
           >
-            {/* Orbital Halo & Profile Frame */}
-            <div className="relative w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] lg:w-[280px] lg:h-[280px] xl:w-[310px] xl:h-[310px] flex items-center justify-center">
+            {/* Authentic Profile Cutout with Background-Free Portrait & Full Orbital System */}
+            <div className="relative w-full max-w-[285px] sm:max-w-[310px] lg:max-w-[325px] flex items-center justify-center">
               
-              {/* Soft Animated Glow Halo */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-blue/25 via-primary-violet/20 to-primary-cyan/25 blur-2xl pointer-events-none animate-pulse" />
+              {/* Soft Ambient Radial Backlight Glow (Centered on portrait) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[54%] w-[310px] sm:w-[340px] h-[310px] sm:h-[340px] rounded-full bg-gradient-to-tr from-primary-blue/20 via-primary-violet/15 to-primary-cyan/20 blur-3xl pointer-events-none" />
 
-              {/* Animated Orbital Rings */}
-              <div className="orbit-ring orbit-ring-1" />
-              <div className="orbit-ring orbit-ring-2" />
+              {/* Complete Futuristic Circular Orbit System (Full Circles passing behind photo & emerging at arms/hands) */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[54%] pointer-events-none z-0 flex items-center justify-center">
+                
+                {/* 1. Primary Complete Circular Orbit Track with Satellite Nodes */}
+                <motion.div 
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 75, repeat: Infinity, ease: 'linear' }}
+                  className="w-[375px] h-[375px] sm:w-[405px] sm:h-[405px] lg:w-[430px] lg:h-[430px] rounded-full border border-white/20 relative shadow-[0_0_12px_rgba(255,255,255,0.05)]"
+                >
+                  {/* Top Apex Node (Green/Cyan, exactly as in SS2) */}
+                  <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                  {/* Upper Right Orbit Node (White glowing dot, as in SS2) */}
+                  <span className="absolute top-[32%] -right-1 w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]" />
+                  {/* Lower Left Arm Node (Cyan glowing dot, as in SS2) */}
+                  <span className="absolute bottom-[28%] -left-1 w-2 h-2 rounded-full bg-primary-cyan shadow-[0_0_8px_#25D9FF]" />
+                  {/* Lower Right Arm Node (Violet dot, as in SS2) */}
+                  <span className="absolute bottom-[20%] right-5 w-1.5 h-1.5 rounded-full bg-primary-violet shadow-[0_0_6px_#985CFF]" />
+                </motion.div>
 
-              {/* Central Portrait Frame */}
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-56 lg:h-56 xl:w-60 xl:h-60 rounded-full p-2 bg-gradient-to-b from-primary-cyan/50 via-primary-blue/30 to-primary-violet/50 shadow-[0_0_35px_rgba(56,119,255,0.4)]">
-                <div className="w-full h-full rounded-full overflow-hidden bg-[#080D18] relative border border-white/15 flex items-center justify-center shadow-inner">
-                  {!imageError ? (
-                    <img
-                      src={PERSONAL_INFO.profileImage}
-                      alt="Rohit Kumar - Full Stack Developer"
-                      onError={() => setImageError(true)}
-                      className="w-full h-full object-cover object-top scale-105 hover:scale-110 transition-transform duration-700"
-                      width="400"
-                      height="400"
-                      loading="eager"
+                {/* 2. Secondary Tilted Elliptical Orbit Track with Revolving Satellite Node (-22deg tilt) */}
+                <svg 
+                  viewBox="0 0 430 295"
+                  className="absolute w-[395px] h-[270px] sm:w-[430px] sm:h-[295px] lg:w-[455px] lg:h-[310px] -rotate-[22deg] overflow-visible pointer-events-none"
+                >
+                  <defs>
+                    <path
+                      id="tiltedOrbitTrack"
+                      d="M 429,147.5 A 214,146.5 0 1,1 1,147.5 A 214,146.5 0 1,1 429,147.5"
                     />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-primary-blue/30 to-primary-violet/30 text-white font-heading font-extrabold text-4xl tracking-wider select-none">
-                      <span>RK</span>
-                      <span className="text-[10px] font-mono text-primary-cyan tracking-widest uppercase mt-1">
-                        Rohit Kumar
-                      </span>
-                    </div>
-                  )}
-                  {/* Subtle lighting vignette */}
-                  <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20 pointer-events-none bg-gradient-to-t from-[#030610]/60 via-transparent to-transparent" />
-                </div>
+                  </defs>
+
+                  {/* Stationary Orbit Stroke Track */}
+                  <use
+                    href="#tiltedOrbitTrack"
+                    fill="none"
+                    stroke="rgba(37,217,255,0.25)"
+                    strokeWidth="1"
+                  />
+
+                  {/* Revolving Cyan Satellite Node (starts right at user marked spot and glides continuously around track) */}
+                  <circle r="4" fill="#25D9FF" style={{ filter: 'drop-shadow(0 0 8px #25D9FF)' }}>
+                    <animateMotion dur="65s" repeatCount="indefinite">
+                      <mpath href="#tiltedOrbitTrack" />
+                    </animateMotion>
+                  </circle>
+
+                  {/* Revolving Secondary Violet Satellite Node (opposite side) */}
+                  <circle r="2.5" fill="#985CFF" style={{ filter: 'drop-shadow(0 0 6px #985CFF)' }}>
+                    <animateMotion dur="65s" repeatCount="indefinite" begin="-32.5s">
+                      <mpath href="#tiltedOrbitTrack" />
+                    </animateMotion>
+                  </circle>
+                </svg>
+
+                {/* 3. Tertiary Concentric Tech Ring with Subtle Opacity Breathe */}
+                <motion.div 
+                  animate={{ opacity: [0.25, 0.55, 0.25] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute w-[250px] h-[250px] sm:w-[275px] sm:h-[275px] lg:w-[290px] lg:h-[290px] rounded-full border border-dashed border-white/15" 
+                />
               </div>
 
-              {/* Floating Badge 1: MERN FULL STACK */}
+              {/* Subtle Red Telemetry Wireframe Sphere Accent (Bottom-Right, emerging at right hand like SS2) */}
+              <div className="absolute bottom-2 -right-3.5 sm:-right-5.5 w-12 h-12 rounded-full bg-gradient-to-br from-red-500/25 via-primary-violet/15 to-transparent blur-[0.5px] border border-red-500/40 flex items-center justify-center pointer-events-none z-0 shadow-[0_0_15px_rgba(239,68,68,0.25)]">
+                <div className="w-6.5 h-6.5 rounded-full border border-dashed border-red-400/60 animate-spin-slow" />
+                <div className="absolute w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_8px_#ef4444]" />
+              </div>
+
+              {/* Profile Image (100% COMPLETELY STATIC - Compact & Perfectly Proportioned) */}
+              <div className="relative z-10 w-full flex items-center justify-center">
+                {!imageError ? (
+                  <img
+                    src="./assets/rohit-profile-cutout.png"
+                    alt="Rohit Kumar - Full Stack Developer"
+                    onError={() => setImageError(true)}
+                    className="w-full max-w-[235px] sm:max-w-[255px] lg:max-w-[270px] xl:max-w-[280px] h-auto object-contain object-top drop-shadow-[0_15px_35px_rgba(0,0,0,0.85)] block"
+                    width="400"
+                    height="490"
+                    loading="eager"
+                  />
+                ) : (
+                  <div className="w-48 h-48 rounded-full flex flex-col items-center justify-center bg-gradient-to-br from-primary-blue/30 to-primary-violet/30 text-white font-heading font-extrabold text-2xl tracking-wider select-none">
+                    <span>RK</span>
+                    <span className="text-[9px] font-mono text-primary-cyan tracking-widest uppercase mt-1">
+                      Rohit Kumar
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Floating Badge 1: MERN (Top-Left, visually stable with subtle micro-float) */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute -top-1 -left-2 sm:left-0 z-20 animate-float"
+                animate={{ y: [-2, 2, -2] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute top-3 -left-3 sm:-left-5 z-20"
               >
-                <div className="glass-panel-elevated px-3 py-1.5 rounded-xl border border-primary-blue/40 shadow-glow-blue flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-primary-blue/20 flex items-center justify-center border border-primary-blue/40 text-primary-cyan">
-                    <Code2 className="w-3.5 h-3.5" />
+                <div className="bg-[#090E1A]/95 backdrop-blur-md px-2.5 sm:px-3 py-1 rounded-xl border border-white/15 shadow-[0_6px_16px_rgba(0,0,0,0.6)] flex items-center gap-1.5 hover:border-emerald-400/50 transition-colors">
+                  <div className="w-3.5 h-3.5 rounded-md bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30 text-emerald-400">
+                    <Layers className="w-2.5 h-2.5" />
                   </div>
-                  <div>
-                    <span className="block text-[8px] font-mono uppercase tracking-wider text-text-secondary">Core Focus</span>
-                    <span className="block text-[10px] sm:text-[11px] font-bold text-white tracking-wide">MERN FULL STACK</span>
-                  </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wider">MERN</span>
                 </div>
               </motion.div>
 
-              {/* Floating Badge 2: WORDPRESS & SEO */}
+              {/* Floating Badge 2: WORDPRESS (Right, shifted 3px left) */}
               <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.9, duration: 0.6 }}
-                className="absolute -bottom-1 -right-2 sm:right-0 z-20 animate-float-delayed"
+                animate={{ y: [2, -2, 2] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute left-[calc(50%+155px)] sm:left-[calc(50%+171px)] lg:left-[calc(50%+181px)] top-[calc(46%-4px)] sm:top-[calc(46%-6px)] lg:top-[calc(46%-8px)] -translate-x-1/2 -translate-y-1/2 z-20"
               >
-                <div className="glass-panel-elevated px-3 py-1.5 rounded-xl border border-primary-violet/40 shadow-glow-violet flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-lg bg-primary-violet/20 flex items-center justify-center border border-primary-violet/40 text-primary-violet">
-                    <Sparkles className="w-3.5 h-3.5" />
+                <div className="bg-[#090E1A]/95 backdrop-blur-md px-2.5 sm:px-3 py-1 rounded-xl border border-white/15 shadow-[0_6px_16px_rgba(0,0,0,0.6)] flex items-center gap-1.5 hover:border-primary-cyan/50 transition-colors">
+                  <div className="w-3.5 h-3.5 rounded-md bg-white/10 flex items-center justify-center border border-white/20 text-white">
+                    <WordPressIcon size={11} className="text-white" />
                   </div>
-                  <div>
-                    <span className="block text-[8px] font-mono uppercase tracking-wider text-text-secondary">Specialization</span>
-                    <span className="block text-[10px] sm:text-[11px] font-bold text-white tracking-wide">WORDPRESS &amp; SEO</span>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wider">WORDPRESS</span>
+                </div>
+              </motion.div>
+
+              {/* Floating Badge 3: SEO (Lower-Left, visually stable with subtle micro-float) */}
+              <motion.div
+                animate={{ y: [-2, 2, -2] }}
+                transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                className="absolute bottom-6 -left-2 sm:-left-4 z-20"
+              >
+                <div className="bg-[#090E1A]/95 backdrop-blur-md px-2.5 sm:px-3 py-1 rounded-xl border border-white/15 shadow-[0_6px_16px_rgba(0,0,0,0.6)] flex items-center gap-1.5 hover:border-amber-400/50 transition-colors">
+                  <div className="w-3.5 h-3.5 rounded-md bg-amber-500/20 flex items-center justify-center border border-amber-500/30 text-amber-400">
+                    <TrendingUp className="w-2.5 h-2.5" />
                   </div>
+                  <span className="text-[10px] sm:text-[11px] font-mono font-bold text-white tracking-wider">SEO</span>
                 </div>
               </motion.div>
             </div>
 
-            {/* EXACT REQUIRED "AVAILABLE FOR" CARD */}
+            {/* EXACT REQUIRED "AVAILABLE FOR" CARD (Compact & Seamlessly Connected Flush Below Image) */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.6 }}
-              className="w-full max-w-sm glass-panel-elevated p-4 sm:p-4.5 rounded-2xl border border-border-subtle mt-4 sm:mt-5 shadow-xl"
+              className="w-full max-w-[265px] sm:max-w-[285px] lg:max-w-[305px] xl:max-w-[315px] glass-panel-elevated p-2.5 sm:p-3 rounded-xl border border-border-subtle -mt-1 sm:-mt-2 shadow-lg z-20 relative"
             >
-              <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-border-subtle/70">
-                <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-primary-cyan">
+              <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-border-subtle/70">
+                <span className="text-[9.5px] font-mono font-bold uppercase tracking-wider text-primary-cyan">
                   AVAILABLE FOR
                 </span>
-                <span className="flex items-center gap-1.5 text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                <span className="flex items-center gap-1 text-[8.5px] font-mono text-emerald-400 font-semibold bg-emerald-500/10 px-1.5 py-0.5 rounded-full border border-emerald-500/30">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   Immediate
                 </span>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {/* 1. Full Stack Development */}
-                <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-surface border border-border-subtle text-text-main font-medium text-xs">
-                  <Check className="w-3.5 h-3.5 text-primary-cyan shrink-0" strokeWidth={2.2} />
+                <div className="flex items-center gap-2 px-2 py-0.5 rounded-md bg-surface border border-border-subtle text-text-main font-medium text-[10.5px]">
+                  <Check className="w-2.5 h-2.5 text-primary-cyan shrink-0" strokeWidth={2.4} />
                   <span>Full Stack Development</span>
                 </div>
 
                 {/* 2. WordPress - SEO */}
-                <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-surface border border-border-subtle text-text-main font-medium text-xs">
-                  <Check className="w-3.5 h-3.5 text-primary-violet shrink-0" strokeWidth={2.2} />
+                <div className="flex items-center gap-2 px-2 py-0.5 rounded-md bg-surface border border-border-subtle text-text-main font-medium text-[10.5px]">
+                  <Check className="w-2.5 h-2.5 text-primary-violet shrink-0" strokeWidth={2.4} />
                   <span>WordPress - SEO</span>
                 </div>
 
                 {/* 3. Digital Marketing */}
-                <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-surface border border-border-subtle text-text-main font-medium text-xs">
-                  <Check className="w-3.5 h-3.5 text-text-muted shrink-0" strokeWidth={2.2} />
+                <div className="flex items-center gap-2 px-2 py-0.5 rounded-md bg-surface border border-border-subtle text-text-main font-medium text-[10.5px]">
+                  <Check className="w-2.5 h-2.5 text-text-muted shrink-0" strokeWidth={2.4} />
                   <span>Digital Marketing</span>
                 </div>
               </div>
@@ -336,14 +404,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1, duration: 0.8 }}
-        className="mt-4 sm:mt-5 z-20 flex flex-col items-center"
+        className="mt-2 sm:mt-3 z-20 flex flex-col items-center"
       >
         <a
           href="#about"
           className="group flex flex-col items-center gap-0.5 cursor-pointer select-none"
           aria-label="Scroll to explore"
         >
-          <span className="font-mono text-[9.5px] sm:text-[10px] tracking-[0.2em] text-[#25D9FF] font-semibold uppercase drop-shadow-[0_0_6px_rgba(37,217,255,0.35)] group-hover:text-white transition-colors">
+          <span className="font-mono text-[9px] sm:text-[9.5px] tracking-[0.2em] text-[#25D9FF] font-semibold uppercase drop-shadow-[0_0_6px_rgba(37,217,255,0.35)] group-hover:text-white transition-colors">
             SCROLL TO EXPLORE
           </span>
           <ChevronDown className="w-3 h-3 text-[#3877FF] group-hover:text-[#25D9FF] animate-bounce transition-colors" strokeWidth={2.2} />
