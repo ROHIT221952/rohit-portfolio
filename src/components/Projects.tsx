@@ -7,8 +7,8 @@ import { AIStoryMockup, EcommerceMockup, VPNGuiMockup } from './ProjectMockups';
 
 const PROJECT_CATEGORIES = [
   { id: 'all', label: 'All Projects' },
-  { id: 'ai', label: 'AI Applications' },
   { id: 'mern', label: 'MERN Full-Stack' },
+  { id: 'ai', label: 'AI Applications' },
   { id: 'cms', label: 'WordPress & SEO' },
 ];
 

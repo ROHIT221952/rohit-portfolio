@@ -244,7 +244,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "MERN Stack Developer Trainee",
     company: "QSpiders",
     location: "Noida, India",
-    period: "August 2025 – May 2026",
+    period: "August 2025 – March 2026",
     badge: "Full-Stack Training",
     isCurrent: false,
     description: "Completed intensive project-based training in MongoDB, Express.js, React.js, Node.js, Redux Toolkit, authentication and protected REST APIs.",

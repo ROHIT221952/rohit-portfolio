@@ -14,7 +14,12 @@ import {
   Plus,
   Loader2,
   Lock,
-  Zap
+  Zap,
+  Code2,
+  Layers,
+  Activity,
+  Terminal,
+  CheckCircle2
 } from 'lucide-react';
 
 export const AIStoryMockup: React.FC = () => {
@@ -430,6 +435,237 @@ export const VPNGuiMockup: React.FC = () => {
               </div>
               <div className="w-full bg-surface h-1.5 rounded-full overflow-hidden">
                 <div className="bg-primary-cyan h-full w-[94%] rounded-full" />
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const PortfolioMockup: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<'ui' | 'stack' | 'audit'>('ui');
+  const [themeMode, setThemeMode] = useState<'cyan' | 'violet' | 'emerald'>('cyan');
+  const [interactiveCount, setInteractiveCount] = useState(4);
+
+  const themeColors = {
+    cyan: {
+      border: 'border-primary-cyan/40',
+      badge: 'bg-primary-cyan/15 text-primary-cyan border-primary-cyan/30',
+      glow: 'shadow-[0_0_15px_rgba(37,217,255,0.25)]',
+      accentText: 'text-primary-cyan',
+      btn: 'bg-primary-blue text-white hover:bg-primary-cyan hover:text-black',
+      dot: 'bg-primary-cyan'
+    },
+    violet: {
+      border: 'border-primary-violet/40',
+      badge: 'bg-primary-violet/15 text-primary-violet border-primary-violet/30',
+      glow: 'shadow-[0_0_15px_rgba(152,92,255,0.25)]',
+      accentText: 'text-primary-violet',
+      btn: 'bg-primary-violet text-white hover:bg-white hover:text-black',
+      dot: 'bg-primary-violet'
+    },
+    emerald: {
+      border: 'border-emerald-400/40',
+      badge: 'bg-emerald-400/15 text-emerald-400 border-emerald-400/30',
+      glow: 'shadow-[0_0_15px_rgba(52,211,153,0.25)]',
+      accentText: 'text-emerald-400',
+      btn: 'bg-emerald-600 text-white hover:bg-emerald-400 hover:text-black',
+      dot: 'bg-emerald-400'
+    }
+  };
+
+  const currentTheme = themeColors[themeMode];
+
+  return (
+    <div className={`w-full bg-[#080E1C] rounded-xl overflow-hidden border border-primary-cyan/30 shadow-2xl text-text-main font-sans select-none transition-all duration-300 ${currentTheme.glow}`}>
+      {/* Browser Bar */}
+      <div className="bg-[#050A14] px-3.5 py-2 border-b border-border-subtle flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <span className="w-2 h-2 rounded-full bg-rose-500/80" />
+          <span className="w-2 h-2 rounded-full bg-amber-500/80" />
+          <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+        </div>
+        <div className="flex items-center gap-1 bg-[#091122] px-2.5 py-0.5 rounded text-[10px] font-mono text-text-secondary border border-border-subtle/50">
+          <span className="text-emerald-400">https://</span>
+          <span>rohit221952.github.io/rohit-portfolio</span>
+        </div>
+        <div className="flex items-center gap-1 text-[10px] font-mono text-primary-cyan bg-primary-blue/10 px-2 py-0.5 rounded border border-primary-blue/30">
+          <Activity className="w-2.5 h-2.5 animate-pulse text-primary-cyan" />
+          <span>Lighthouse 98+</span>
+        </div>
+      </div>
+
+      {/* Internal Web Application Mockup UI */}
+      <div className="p-3 sm:p-4 space-y-2.5">
+        {/* App Nav */}
+        <div className="flex items-center justify-between pb-2 border-b border-white/5">
+          <div className="flex items-center gap-1.5">
+            <div className="w-6 h-6 rounded-md bg-gradient-to-tr from-primary-cyan to-primary-blue flex items-center justify-center text-black font-bold text-xs shadow-sm">
+              <Code2 className="w-3.5 h-3.5" />
+            </div>
+            <div>
+              <span className="font-heading font-bold text-xs sm:text-sm tracking-wide text-white">Rohit Kumar</span>
+              <span className="text-[9px] font-mono text-text-secondary ml-1.5 hidden sm:inline">Portfolio v2.0</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-1 text-[9px] font-mono">
+            <button
+              type="button"
+              onClick={() => setActiveTab('ui')}
+              className={`px-1.5 py-0.5 rounded transition-colors ${activeTab === 'ui' ? 'bg-primary-blue text-white' : 'text-text-muted hover:text-white'}`}
+            >
+              UI Showcase
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('stack')}
+              className={`px-1.5 py-0.5 rounded transition-colors ${activeTab === 'stack' ? 'bg-primary-blue text-white' : 'text-text-muted hover:text-white'}`}
+            >
+              Architecture
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab('audit')}
+              className={`px-1.5 py-0.5 rounded transition-colors ${activeTab === 'audit' ? 'bg-primary-blue text-white' : 'text-text-muted hover:text-white'}`}
+            >
+              Lighthouse
+            </button>
+          </div>
+        </div>
+
+        {/* Tab 1: UI Showcase */}
+        {activeTab === 'ui' && (
+          <div className="space-y-2.5">
+            {/* Mini Hero Card with Theme Accent Selector */}
+            <div className="bg-gradient-to-r from-slate-900/90 via-[#0B1326] to-slate-900/90 p-2.5 sm:p-3 rounded-lg border border-border-subtle space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <div className="relative">
+                    <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-primary-blue to-primary-cyan flex items-center justify-center text-white text-[11px] font-bold border border-white/20">
+                      RK
+                    </div>
+                    <span className={`absolute bottom-0 right-0 w-2 h-2 rounded-full ${currentTheme.dot} ring-2 ring-[#080E1C]`} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-heading font-bold text-white leading-tight">
+                      Full-Stack Dev &amp; SEO Executive
+                    </h4>
+                    <span className="text-[9px] font-mono text-text-secondary">Available for immediate hiring</span>
+                  </div>
+                </div>
+
+                {/* Interactive Accent Switcher */}
+                <div className="flex items-center gap-1 bg-[#060B16] p-1 rounded-md border border-border-subtle">
+                  <button
+                    type="button"
+                    onClick={() => setThemeMode('cyan')}
+                    className={`w-3 h-3 rounded-full bg-primary-cyan transition-transform ${themeMode === 'cyan' ? 'scale-125 ring-1 ring-white' : 'opacity-60'}`}
+                    title="Cyan Glow"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setThemeMode('violet')}
+                    className={`w-3 h-3 rounded-full bg-primary-violet transition-transform ${themeMode === 'violet' ? 'scale-125 ring-1 ring-white' : 'opacity-60'}`}
+                    title="Violet Glow"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setThemeMode('emerald')}
+                    className={`w-3 h-3 rounded-full bg-emerald-400 transition-transform ${themeMode === 'emerald' ? 'scale-125 ring-1 ring-white' : 'opacity-60'}`}
+                    title="Emerald Glow"
+                  />
+                </div>
+              </div>
+
+              {/* Interactive micro badge bar */}
+              <div className="bg-[#060B16] p-2 rounded border border-border-subtle flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 text-[10px] text-text-secondary truncate">
+                  <Sparkles className={`w-3 h-3 ${currentTheme.accentText}`} />
+                  <span className="truncate">Cosmic glassmorphism + Framer Motion</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setInteractiveCount((c) => c + 1)}
+                  className={`text-[9px] font-mono font-semibold px-2 py-0.5 rounded transition-all cursor-pointer ${currentTheme.btn}`}
+                >
+                  +{interactiveCount} Projects
+                </button>
+              </div>
+            </div>
+
+            {/* Feature Mini Cards */}
+            <div className="grid grid-cols-3 gap-2 text-center">
+              <div className="bg-[#0B1326] p-1.5 sm:p-2 rounded-lg border border-border-subtle">
+                <span className="block text-[11px] sm:text-xs font-mono font-bold text-primary-cyan">Vite 6</span>
+                <span className="text-[8px] sm:text-[9px] text-text-secondary">Instant HMR</span>
+              </div>
+              <div className="bg-[#0B1326] p-1.5 sm:p-2 rounded-lg border border-border-subtle">
+                <span className="block text-[11px] sm:text-xs font-mono font-bold text-primary-violet">Framer</span>
+                <span className="text-[8px] sm:text-[9px] text-text-secondary">60 FPS Motion</span>
+              </div>
+              <div className="bg-[#0B1326] p-1.5 sm:p-2 rounded-lg border border-border-subtle">
+                <span className="block text-[11px] sm:text-xs font-mono font-bold text-emerald-400">CI/CD</span>
+                <span className="text-[8px] sm:text-[9px] text-text-secondary">GitHub Actions</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 2: Architecture Pipeline */}
+        {activeTab === 'stack' && (
+          <div className="space-y-1.5 py-1">
+            <div className="flex items-center justify-between p-2 rounded bg-[#0D162B] border border-border-subtle text-[10px]">
+              <span className="flex items-center gap-1.5 text-white font-mono">
+                <Layers className="w-3 h-3 text-primary-cyan" /> React 18 &amp; TypeScript Core
+              </span>
+              <span className="text-primary-cyan font-mono">Strict Types</span>
+            </div>
+            <div className="flex items-center justify-between p-2 rounded bg-[#0D162B] border border-border-subtle text-[10px]">
+              <span className="flex items-center gap-1.5 text-white font-mono">
+                <Terminal className="w-3 h-3 text-primary-violet" /> Tailwind CSS + PostCSS Engine
+              </span>
+              <span className="text-primary-violet font-mono">Zero Runtime</span>
+            </div>
+            <div className="flex items-center justify-between p-2 rounded bg-[#0D162B] border border-border-subtle text-[10px]">
+              <span className="flex items-center gap-1.5 text-white font-mono">
+                <CheckCircle2 className="w-3 h-3 text-emerald-400" /> Automated GitHub Pages Deploy
+              </span>
+              <span className="text-emerald-400 font-mono">Passing</span>
+            </div>
+          </div>
+        )}
+
+        {/* Tab 3: Lighthouse Audit */}
+        {activeTab === 'audit' && (
+          <div className="space-y-1.5 py-1">
+            <div className="grid grid-cols-4 gap-1.5 text-center">
+              <div className="bg-[#0D162B] p-1.5 rounded-lg border border-emerald-500/30">
+                <span className="block text-xs font-mono font-extrabold text-emerald-400">99</span>
+                <span className="text-[8px] text-text-secondary">Performance</span>
+              </div>
+              <div className="bg-[#0D162B] p-1.5 rounded-lg border border-emerald-500/30">
+                <span className="block text-xs font-mono font-extrabold text-emerald-400">100</span>
+                <span className="text-[8px] text-text-secondary">Accessibility</span>
+              </div>
+              <div className="bg-[#0D162B] p-1.5 rounded-lg border border-emerald-500/30">
+                <span className="block text-xs font-mono font-extrabold text-emerald-400">100</span>
+                <span className="text-[8px] text-text-secondary">Best Practice</span>
+              </div>
+              <div className="bg-[#0D162B] p-1.5 rounded-lg border border-emerald-500/30">
+                <span className="block text-xs font-mono font-extrabold text-emerald-400">100</span>
+                <span className="text-[8px] text-text-secondary">SEO Ready</span>
+              </div>
+            </div>
+
+            <div className="p-2 rounded bg-[#0D162B] border border-border-subtle text-[10px] space-y-1">
+              <div className="flex justify-between text-white font-mono text-[9px]">
+                <span>Speed Index &lt; 0.8s</span>
+                <span className="text-emerald-400">Top 1% Tier</span>
+              </div>
+              <div className="w-full bg-surface h-1.5 rounded-full overflow-hidden">
+                <div className="bg-gradient-to-r from-primary-cyan to-emerald-400 h-full w-[99%] rounded-full" />
               </div>
             </div>
           </div>

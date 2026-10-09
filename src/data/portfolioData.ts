@@ -52,8 +52,8 @@ export const MARQUEE_TECH = [
 
 export const STATS: StatItem[] = [
   {
-    value: "3+",
-    numericValue: 3,
+    value: "4+",
+    numericValue: 4,
     suffix: "+",
     label: "Production-Ready Projects",
     description: "Full-stack apps & live web platforms",
@@ -231,7 +231,7 @@ export const EXPERIENCES: ExperienceItem[] = [
     role: "MERN Stack Developer Trainee",
     company: "QSpiders, Noida",
     location: "Noida, India",
-    period: "August 2025 – May 2026",
+    period: "August 2025 – March 2026",
     badge: "Full-Stack Training",
     isCurrent: false,
     description: "MongoDB, Express.js, React.js, Node.js, REST APIs, JWT authentication, protected routes, Redux Toolkit.",

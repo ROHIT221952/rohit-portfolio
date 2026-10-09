@@ -146,20 +146,20 @@ export const Contact: React.FC = () => {
   const mailtoLink = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.interestedIn + ' Inquiry')}&body=${encodeURIComponent(`Hi Rohit,\n\n${formData.message}\n\nFrom: ${formData.name} (${formData.email})`)}`;
 
   return (
-    <section id="contact" className="relative py-20 sm:py-28 bg-[#040814] cosmic-grid overflow-hidden">
+    <section id="contact" className="relative py-14 sm:py-20 bg-[#040814] cosmic-grid overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-primary-blue/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-primary-blue/10 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-[1440px] xl:max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 relative z-10">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-16">
+        <div className="flex flex-col items-center text-center mb-7 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-blue/10 border border-primary-blue/30 text-xs font-mono text-primary-cyan tracking-wider uppercase mb-3"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-blue/10 border border-primary-blue/30 text-xs font-mono text-primary-cyan tracking-wider uppercase mb-2"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary-cyan" />
             07 — LET'S CONNECT
@@ -171,12 +171,12 @@ export const Contact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl tracking-tight text-white mb-3"
+            className="font-heading font-extrabold text-2xl sm:text-3xl md:text-4xl tracking-tight text-white mb-2"
           >
             LET'S BUILD SOMETHING GREAT.
           </motion.h2>
 
-          {/* Supporting Text with Developer roles first: Full Stack, Frontend, Python, Digital Marketing, WordPress, SEO */}
+          {/* Supporting Text */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -188,8 +188,8 @@ export const Contact: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Two-Column Contact Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        {/* Two-Column Contact Layout (Balanced 50/50 Grid - Left Card ~200px wider, Both ~300px more compact in height) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-6 items-stretch">
           
           {/* LEFT: Get In Touch + Quick Info */}
           <motion.div
@@ -197,93 +197,96 @@ export const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 h-full flex flex-col"
+            className="h-full flex flex-col"
           >
-            <div className="glass-panel-elevated p-6 sm:p-8 rounded-2xl border border-border-subtle shadow-xl relative overflow-hidden h-full flex flex-col justify-between">
+            <div className="glass-panel-elevated p-4 sm:p-5 rounded-2xl border border-border-subtle shadow-xl relative overflow-hidden h-full flex flex-col justify-between">
               <div>
-                {/* 3D Network Sphere */}
-                <div className="w-full mb-3 flex items-center justify-center">
-                  <NetworkSphere className="w-40 h-40 sm:w-44 sm:h-44 aspect-square" />
+                {/* Header Row: Title & Subtitle on left, 3D Network Sphere on right */}
+                <div className="flex items-center justify-between gap-3 mb-3">
+                  <div>
+                    <h3 className="font-heading font-extrabold text-lg sm:text-xl text-white mb-0.5">
+                      Get In Touch
+                    </h3>
+                    <p className="text-xs text-text-secondary leading-snug">
+                      Have an open role, project, or growth challenge? Reach out directly below:
+                    </p>
+                  </div>
+                  <div className="shrink-0 flex items-center justify-center">
+                    <NetworkSphere className="w-16 h-16 sm:w-20 sm:h-20 aspect-square" />
+                  </div>
                 </div>
 
-                <h3 className="font-heading font-extrabold text-xl text-white mb-1.5">
-                  Get In Touch
-                </h3>
-                <p className="text-xs sm:text-sm text-text-secondary mb-5 leading-relaxed">
-                  Have an open role, engineering project, or growth challenge? Feel free to reach out directly through any of the channels below.
-                </p>
-
-                {/* EXACT QUICK INFO STRUCTURE */}
-                <div className="space-y-2.5 font-mono text-xs sm:text-sm">
+                {/* 2-Column Quick Info Grid (Saves ~180px vertical height) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-xs">
                   
                   {/* 1. Full Name */}
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle text-text-main">
-                    <User className="w-4 h-4 text-primary-cyan shrink-0" />
-                    <div>
-                      <span className="text-[10px] text-text-muted block uppercase">Full Name</span>
-                      <span className="font-semibold text-white">{PERSONAL_INFO.name}</span>
+                  <div className="flex items-center gap-2 p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle text-text-main">
+                    <User className="w-3.5 h-3.5 text-primary-cyan shrink-0" />
+                    <div className="truncate">
+                      <span className="text-[9px] text-text-muted block uppercase leading-none">Full Name</span>
+                      <span className="font-semibold text-white truncate text-[11px] sm:text-xs">{PERSONAL_INFO.name}</span>
                     </div>
                   </div>
 
                   {/* 2. Email */}
-                  <div className="flex items-center justify-between p-3 rounded-xl bg-surface border border-border-subtle hover:border-primary-blue/40 transition-colors">
+                  <div className="flex items-center justify-between p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle hover:border-primary-blue/40 transition-colors">
                     <a
                       href={`mailto:${PERSONAL_INFO.email}`}
-                      className="flex items-center gap-3 text-text-secondary hover:text-white truncate"
+                      className="flex items-center gap-2 text-text-secondary hover:text-white truncate min-w-0"
                     >
-                      <Mail className="w-4 h-4 text-primary-blue shrink-0" />
-                      <div>
-                        <span className="text-[10px] text-text-muted block uppercase">Email</span>
-                        <span className="truncate">{PERSONAL_INFO.email}</span>
+                      <Mail className="w-3.5 h-3.5 text-primary-blue shrink-0" />
+                      <div className="truncate">
+                        <span className="text-[9px] text-text-muted block uppercase leading-none">Email</span>
+                        <span className="truncate block text-[11px] sm:text-xs">{PERSONAL_INFO.email}</span>
                       </div>
                     </a>
                     <button
                       type="button"
                       onClick={handleCopyEmail}
-                      className="p-1.5 rounded-lg bg-surface-elevated hover:bg-surface-hover text-text-secondary hover:text-primary-cyan transition-colors cursor-pointer"
+                      className="p-1 rounded-md bg-surface-elevated hover:bg-surface-hover text-text-secondary hover:text-primary-cyan transition-colors cursor-pointer shrink-0 ml-1"
                       title="Copy Email"
                       aria-label="Copy Email"
                     >
-                      {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      {copied ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
                     </button>
                   </div>
 
                   {/* 3. Phone */}
                   <a
                     href={`tel:${PERSONAL_INFO.phone}`}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle hover:border-primary-cyan/40 text-text-secondary hover:text-white transition-colors"
+                    className="flex items-center gap-2 p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle hover:border-primary-cyan/40 text-text-secondary hover:text-white transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-primary-cyan shrink-0" />
+                    <Phone className="w-3.5 h-3.5 text-primary-cyan shrink-0" />
                     <div>
-                      <span className="text-[10px] text-text-muted block uppercase">Phone</span>
-                      <span>{PERSONAL_INFO.phone}</span>
+                      <span className="text-[9px] text-text-muted block uppercase leading-none">Phone</span>
+                      <span className="text-[11px] sm:text-xs">{PERSONAL_INFO.phone}</span>
                     </div>
                   </a>
 
                   {/* 4. Location */}
-                  <div className="flex items-center gap-3 p-3 rounded-xl bg-surface border border-border-subtle text-text-secondary">
-                    <MapPin className="w-4 h-4 text-primary-violet shrink-0" />
+                  <div className="flex items-center gap-2 p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle text-text-secondary">
+                    <MapPin className="w-3.5 h-3.5 text-primary-violet shrink-0" />
                     <div>
-                      <span className="text-[10px] text-text-muted block uppercase">Location</span>
-                      <span>{PERSONAL_INFO.location}</span>
+                      <span className="text-[9px] text-text-muted block uppercase leading-none">Location</span>
+                      <span className="text-[11px] sm:text-xs">{PERSONAL_INFO.location}</span>
                     </div>
                   </div>
 
-                  {/* 5. LinkedIn (BEFORE GitHub) */}
+                  {/* 5. LinkedIn */}
                   <a
                     href={PERSONAL_INFO.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-surface border border-border-subtle hover:border-[#0A66C2]/60 text-text-secondary hover:text-white transition-colors"
+                    className="flex items-center justify-between p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle hover:border-[#0A66C2]/60 text-text-secondary hover:text-white transition-colors"
                   >
-                    <div className="flex items-center gap-3">
-                      <LinkedInIcon className="w-4 h-4 text-[#0A66C2] shrink-0" />
-                      <div>
-                        <span className="text-[10px] text-text-muted block uppercase">LinkedIn</span>
-                        <span>linkedin.com/in/rohitkumar88966</span>
+                    <div className="flex items-center gap-2 truncate">
+                      <LinkedInIcon className="w-3.5 h-3.5 text-[#0A66C2] shrink-0" />
+                      <div className="truncate">
+                        <span className="text-[9px] text-text-muted block uppercase leading-none">LinkedIn</span>
+                        <span className="truncate block text-[11px] sm:text-xs">in/rohitkumar88966</span>
                       </div>
                     </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-text-muted" />
+                    <ExternalLink className="w-3 h-3 text-text-muted shrink-0 ml-1" />
                   </a>
 
                   {/* 6. GitHub */}
@@ -291,16 +294,16 @@ export const Contact: React.FC = () => {
                     href={PERSONAL_INFO.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded-xl bg-surface border border-border-subtle hover:border-white/40 text-text-secondary hover:text-white transition-colors"
+                    className="flex items-center justify-between p-2 sm:p-2.5 rounded-xl bg-surface border border-border-subtle hover:border-white/40 text-text-secondary hover:text-white transition-colors"
                   >
-                    <div className="flex items-center gap-3">
-                      <GithubIcon className="w-4 h-4 text-white shrink-0" />
-                      <div>
-                        <span className="text-[10px] text-text-muted block uppercase">GitHub</span>
-                        <span>github.com/{PERSONAL_INFO.githubUsername}</span>
+                    <div className="flex items-center gap-2 truncate">
+                      <GithubIcon className="w-3.5 h-3.5 text-white shrink-0" />
+                      <div className="truncate">
+                        <span className="text-[9px] text-text-muted block uppercase leading-none">GitHub</span>
+                        <span className="truncate block text-[11px] sm:text-xs">github.com/{PERSONAL_INFO.githubUsername}</span>
                       </div>
                     </div>
-                    <ExternalLink className="w-3.5 h-3.5 text-text-muted" />
+                    <ExternalLink className="w-3 h-3 text-text-muted shrink-0 ml-1" />
                   </a>
 
                 </div>
@@ -314,40 +317,42 @@ export const Contact: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 h-full flex flex-col"
+            className="h-full flex flex-col"
           >
-            <div className="glass-panel-elevated p-6 sm:p-8 rounded-2xl border border-border-subtle shadow-2xl relative h-full flex flex-col justify-between">
+            <div className="glass-panel-elevated p-4 sm:p-5 rounded-2xl border border-border-subtle shadow-xl relative h-full flex flex-col justify-between">
               <div>
-                <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-white mb-1.5">
-                  Send a Message
-                </h3>
-                <p className="text-xs sm:text-sm text-text-secondary mb-4">
-                  Please complete the form below. I will respond to your inquiry promptly.
-                </p>
+                <div className="mb-2.5">
+                  <h3 className="font-heading font-extrabold text-lg sm:text-xl text-white mb-0.5">
+                    Send a Message
+                  </h3>
+                  <p className="text-xs text-text-secondary leading-snug">
+                    Please complete the form below. I will respond to your inquiry promptly.
+                  </p>
+                </div>
 
                 {statusMessage && (
                   <div
-                    className={`p-3.5 rounded-xl mb-4 text-xs sm:text-sm ${
+                    className={`p-2.5 rounded-xl mb-2.5 text-xs ${
                       statusMessage.type === 'success'
                         ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-300'
                         : 'bg-rose-500/15 border border-rose-500/30 text-rose-300'
                     }`}
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-2">
                       {statusMessage.type === 'success' ? (
-                        <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-emerald-400" />
+                        <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5 text-emerald-400" />
                       ) : (
-                        <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-rose-400" />
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5 text-rose-400" />
                       )}
                       <div>
                         <span>{statusMessage.text}</span>
                         {statusMessage.showMailtoFallback && (
-                          <div className="mt-2">
+                          <div className="mt-1.5">
                             <a
                               href={mailtoLink}
-                              className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 rounded-lg text-xs font-mono font-semibold border border-emerald-500/40 transition-colors"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 rounded-lg text-xs font-mono font-semibold border border-emerald-500/40 transition-colors"
                             >
-                              <Mail className="w-3.5 h-3.5" />
+                              <Mail className="w-3 h-3" />
                               <span>Open Email Client Directly</span>
                             </a>
                           </div>
@@ -358,13 +363,13 @@ export const Contact: React.FC = () => {
                 )}
               </div>
 
-              {/* Form with required inputs and dropdown */}
-              <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-between">
+              {/* Form with compact horizontal arrangement (Saves ~280px vertical height) */}
+              <form onSubmit={handleSubmit} className="space-y-2 flex-1 flex flex-col justify-between">
                 
-                {/* Name & Email Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Row 1: Name & Email Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div>
-                    <label htmlFor="name" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary mb-1">
+                    <label htmlFor="name" className="block text-[10px] font-mono uppercase tracking-wider text-text-secondary mb-0.5">
                       Your Name *
                     </label>
                     <input
@@ -375,12 +380,12 @@ export const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="e.g. Alex Morgan"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-blue focus:ring-1 focus:ring-primary-blue text-xs sm:text-sm text-white placeholder-text-muted transition-all outline-none"
+                      className="w-full px-3 py-1.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-blue focus:ring-1 focus:ring-primary-blue text-xs text-white placeholder-text-muted transition-all outline-none"
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary mb-1">
+                    <label htmlFor="email" className="block text-[10px] font-mono uppercase tracking-wider text-text-secondary mb-0.5">
                       Your Email *
                     </label>
                     <input
@@ -391,42 +396,18 @@ export const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="alex@company.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-cyan focus:ring-1 focus:ring-primary-cyan text-xs sm:text-sm text-white placeholder-text-muted transition-all outline-none"
+                      className="w-full px-3 py-1.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-cyan focus:ring-1 focus:ring-primary-cyan text-xs text-white placeholder-text-muted transition-all outline-none"
                     />
                   </div>
                 </div>
 
-                {/* Interested In * Dropdown */}
+                {/* Row 2: Message Textarea */}
                 <div>
-                  <label htmlFor="interestedIn" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary mb-1">
-                    Interested In *
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="interestedIn"
-                      name="interestedIn"
-                      required
-                      value={formData.interestedIn}
-                      onChange={handleChange}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-violet focus:ring-1 focus:ring-primary-violet text-xs sm:text-sm text-white transition-all outline-none appearance-none cursor-pointer"
-                    >
-                      {INTERESTED_IN_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt} className="bg-[#080D18] text-white">
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown className="w-4 h-4 text-text-muted absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                  </div>
-                </div>
-
-                {/* Message * */}
-                <div className="flex-1 flex flex-col">
-                  <div className="flex items-center justify-between mb-1">
-                    <label htmlFor="message" className="block text-[11px] font-mono uppercase tracking-wider text-text-secondary">
+                  <div className="flex items-center justify-between mb-0.5">
+                    <label htmlFor="message" className="block text-[10px] font-mono uppercase tracking-wider text-text-secondary">
                       Message *
                     </label>
-                    <span className="text-[10px] font-mono text-text-muted">
+                    <span className="text-[9px] font-mono text-text-muted">
                       {formData.message.length} chars
                     </span>
                   </div>
@@ -434,32 +415,58 @@ export const Contact: React.FC = () => {
                     id="message"
                     name="message"
                     required
-                    rows={4}
+                    rows={2}
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Describe your project, role opening, or technical requirements..."
-                    className="w-full flex-1 min-h-[90px] px-3.5 py-2.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-blue focus:ring-1 focus:ring-primary-blue text-xs sm:text-sm text-white placeholder-text-muted transition-all outline-none resize-none"
+                    className="w-full min-h-[52px] sm:min-h-[58px] px-3 py-1.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-blue focus:ring-1 focus:ring-primary-blue text-xs text-white placeholder-text-muted transition-all outline-none resize-none"
                   />
                 </div>
 
-                {/* SEND MESSAGE Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3 px-5 rounded-xl font-heading font-bold text-xs sm:text-sm uppercase tracking-wider text-white bg-gradient-to-r from-primary-blue via-primary-blue to-primary-violet hover:from-primary-cyan hover:to-primary-blue transition-all duration-300 shadow-glow-blue hover:shadow-glow-cyan flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed mt-2"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Sending Message...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      <span>SEND MESSAGE</span>
-                    </>
-                  )}
-                </button>
+                {/* Row 3: Interested In Dropdown + SEND MESSAGE Button side by side */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-end">
+                  <div>
+                    <label htmlFor="interestedIn" className="block text-[10px] font-mono uppercase tracking-wider text-text-secondary mb-0.5">
+                      Interested In *
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="interestedIn"
+                        name="interestedIn"
+                        required
+                        value={formData.interestedIn}
+                        onChange={handleChange}
+                        className="w-full px-3 py-1.5 rounded-xl bg-surface border border-border-subtle focus:border-primary-violet focus:ring-1 focus:ring-primary-violet text-xs text-white transition-all outline-none appearance-none cursor-pointer"
+                      >
+                        {INTERESTED_IN_OPTIONS.map((opt) => (
+                          <option key={opt} value={opt} className="bg-[#080D18] text-white">
+                            {opt}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="w-3.5 h-3.5 text-text-muted absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                    </div>
+                  </div>
+
+                  {/* SEND MESSAGE Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-2 px-4 rounded-xl font-heading font-bold text-xs uppercase tracking-wider text-white bg-gradient-to-r from-primary-blue via-primary-blue to-primary-violet hover:from-primary-cyan hover:to-primary-blue transition-all duration-300 shadow-glow-blue hover:shadow-glow-cyan flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed h-[34px]"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5" />
+                        <span>SEND MESSAGE</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
             </div>
           </motion.div>
