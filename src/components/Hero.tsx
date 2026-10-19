@@ -215,7 +215,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-[10px] lg:mt-[78px]"
+            className="lg:col-span-5 flex flex-col items-center justify-center relative mt-[20px] lg:mt-[78px]"
           >
             {/* Authentic Profile Cutout with Background-Free Portrait & Full Orbital System */}
             <div className="relative w-full max-w-[285px] sm:max-w-[310px] lg:max-w-[325px] flex items-center justify-center">
