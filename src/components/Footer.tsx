@@ -21,22 +21,22 @@ export const Footer: React.FC<FooterProps> = () => {
         {/* Main Footer Row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-border-subtle/50">
           
-          {/* Brand Left */}
-          <div className="flex items-center gap-3.5 text-center md:text-left">
+          {/* Brand Left (Image above Rohit Kumar on mobile) */}
+          <div className="flex flex-col items-center text-center gap-3 md:flex-row md:items-center md:gap-3.5 md:text-left">
             <div className="relative">
-              <div className="w-11 h-11 rounded-xl overflow-hidden bg-gradient-to-tr from-primary-blue via-primary-cyan to-primary-violet p-[1.5px] shadow-glow-blue">
+              <div className="w-12 h-12 rounded-xl overflow-hidden bg-gradient-to-tr from-primary-blue via-primary-cyan to-primary-violet p-[1.5px] shadow-glow-blue">
                 <img
                   src={PERSONAL_INFO.profileImage}
                   alt={PERSONAL_INFO.name}
                   className="w-full h-full object-cover object-top rounded-[10px]"
                   loading="lazy"
-                  width="44"
-                  height="44"
+                  width="48"
+                  height="48"
                 />
               </div>
               <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-[#02050D] rounded-full shadow-[0_0_8px_#34d399]" />
             </div>
-            <div>
+            <div className="flex flex-col items-center md:items-start">
               <h3 className="font-heading font-extrabold text-base text-white tracking-wide">
                 {PERSONAL_INFO.name}
               </h3>
