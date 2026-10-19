@@ -331,7 +331,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <motion.div
                 animate={{ y: [2, -2, 2] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute left-[calc(50%+110px)] sm:left-[calc(50%+171px)] lg:left-[calc(50%+181px)] top-[calc(46%-4px)] sm:top-[calc(46%-6px)] lg:top-[calc(46%-8px)] -translate-x-1/2 -translate-y-1/2 z-20"
+                className="absolute right-0 sm:right-auto sm:left-[calc(50%+171px)] lg:left-[calc(50%+181px)] top-[calc(46%-4px)] sm:top-[calc(46%-6px)] lg:top-[calc(46%-8px)] sm:-translate-x-1/2 -translate-y-1/2 z-20"
               >
                 <div className="bg-[#090E1A]/95 backdrop-blur-md px-2.5 sm:px-3 py-1 rounded-xl border border-white/15 shadow-[0_6px_16px_rgba(0,0,0,0.6)] flex items-center gap-1.5 hover:border-primary-cyan/50 transition-colors">
                   <div className="w-3.5 h-3.5 rounded-md bg-white/10 flex items-center justify-center border border-white/20 text-white">
