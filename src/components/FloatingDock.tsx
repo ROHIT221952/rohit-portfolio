@@ -36,13 +36,26 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ onOpenResume }) => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsVisible(scrollY > 250);
+    let ticking = false;
+    let lastPercent = -1;
 
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        setScrollPercent(Math.min(100, Math.round((scrollY / totalHeight) * 100)));
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setIsVisible(scrollY > 250);
+
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalHeight > 0) {
+            const nextPercent = Math.min(100, Math.round((scrollY / totalHeight) * 100));
+            if (Math.abs(nextPercent - lastPercent) >= 2) {
+              lastPercent = nextPercent;
+              setScrollPercent(nextPercent);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 

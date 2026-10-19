@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Code,
   Code2,
@@ -121,18 +121,12 @@ export const Skills: React.FC = () => {
   // Dynamic count calculation
   const totalSkillsCount = SKILLS.length;
 
-  const renderSkillCard = (skill: SkillItem, index: number) => {
+  const renderSkillCard = (skill: SkillItem) => {
     const IconComponent = iconMap[skill.iconName] || Code;
     return (
-      <motion.div
-        layout
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.3) }}
-        whileHover={{ y: -3, transition: { duration: 0.2 } }}
+      <div
         key={skill.name}
-        className="glass-panel p-3 sm:p-3.5 rounded-xl border border-border-subtle hover:border-primary-blue/50 transition-all duration-300 flex flex-col items-center text-center group relative overflow-hidden shadow-sm"
+        className="glass-panel p-3 sm:p-3.5 rounded-xl border border-border-subtle hover:border-primary-blue/50 transition-all duration-200 flex flex-col items-center text-center group relative overflow-hidden shadow-sm"
       >
         {/* Subtle top glow indicator */}
         <div
@@ -141,7 +135,7 @@ export const Skills: React.FC = () => {
         />
 
         <div
-          className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg mb-2 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 shadow-sm"
+          className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg mb-2 flex items-center justify-center transition-transform duration-200 group-hover:scale-105 shadow-sm"
           style={{
             backgroundColor: `${skill.glowColor}15`,
             color: skill.glowColor
@@ -157,7 +151,7 @@ export const Skills: React.FC = () => {
         <span className="text-[9px] font-mono text-text-secondary uppercase tracking-wider px-2 py-0.5 rounded-full bg-surface-elevated border border-border-subtle/60">
           {skill.level}
         </span>
-      </motion.div>
+      </div>
     );
   };
 
@@ -388,14 +382,9 @@ export const Skills: React.FC = () => {
         ) : (
           /* Filtered or Searched Grid View */
           <div>
-            <motion.div
-              layout
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-3.5"
-            >
-              <AnimatePresence mode="popLayout">
-                {filteredSkills.map(renderSkillCard)}
-              </AnimatePresence>
-            </motion.div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-3.5">
+              {filteredSkills.map(renderSkillCard)}
+            </div>
 
             {filteredSkills.length === 0 && (
               <div className="text-center py-12 glass-panel rounded-2xl border border-border-subtle max-w-md mx-auto">

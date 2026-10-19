@@ -21,8 +21,9 @@ export const CosmicBackground: React.FC = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Create subtle drifting stars
-    const starCount = Math.min(Math.floor(width * 0.05), 80);
+    // Check mobile device
+    const isMobile = width < 768;
+    const starCount = isMobile ? 25 : Math.min(Math.floor(width * 0.05), 70);
     const stars: { x: number; y: number; size: number; alpha: number; speed: number; color: string }[] = [];
     const colors = ['#3877FF', '#25D9FF', '#985CFF', '#FFFFFF'];
 
@@ -51,8 +52,10 @@ export const CosmicBackground: React.FC = () => {
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fillStyle = star.color;
         ctx.globalAlpha = star.alpha;
-        ctx.shadowBlur = 4;
-        ctx.shadowColor = star.color;
+        if (!isMobile) {
+          ctx.shadowBlur = 4;
+          ctx.shadowColor = star.color;
+        }
         ctx.fill();
       });
 
@@ -68,12 +71,12 @@ export const CosmicBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 opacity-40" />
-      {/* Ambient gradient nebulae */}
-      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary-blue/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 -right-40 w-[700px] h-[700px] bg-primary-violet/10 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute bottom-10 left-1/4 w-[500px] h-[500px] bg-primary-cyan/8 rounded-full blur-[130px] pointer-events-none" />
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden transform-gpu">
+      <canvas ref={canvasRef} className="absolute inset-0 opacity-40 will-change-transform" />
+      {/* Ambient gradient nebulae using high-performance radial gradients instead of heavy multi-pass blur filters */}
+      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[radial-gradient(circle,_rgba(56,119,255,0.09)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute top-1/3 -right-40 w-[700px] h-[700px] bg-[radial-gradient(circle,_rgba(152,92,255,0.08)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,_rgba(37,217,255,0.06)_0%,_transparent_70%)] pointer-events-none" />
     </div>
   );
 };

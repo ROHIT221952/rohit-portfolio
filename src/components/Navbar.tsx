@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, Code2, Eye } from 'lucide-react';
 import { LinkedInIcon } from './BrandIcons';
@@ -21,31 +21,52 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const isScrolledRef = useRef(false);
+  const activeSectionRef = useRef('hero');
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      // Scrolled background state
-      setIsScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
 
-      // Calculate scroll progress percentage
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalHeight > 0) {
-        setScrollProgress((window.scrollY / totalHeight) * 100);
-      }
+          // Scrolled background state (only trigger React state update when value actually flips)
+          const shouldBeScrolled = scrollY > 30;
+          if (shouldBeScrolled !== isScrolledRef.current) {
+            isScrolledRef.current = shouldBeScrolled;
+            setIsScrolled(shouldBeScrolled);
+          }
 
-      // Active section detection
-      const sections = NAV_LINKS.map(link => link.href.substring(1));
-      const scrollPosition = window.scrollY + 200;
+          // Direct DOM transform for 60fps progress without re-rendering the whole Navbar component
+          const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (progressBarRef.current && totalHeight > 0) {
+            const progress = Math.min(1, Math.max(0, scrollY / totalHeight));
+            progressBarRef.current.style.transform = `scaleX(${progress})`;
+          }
 
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sectionEl = document.getElementById(sections[i]);
-        if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
+          // Active section detection (only re-render when active section actually changes)
+          const sections = NAV_LINKS.map(link => link.href.substring(1));
+          const scrollPosition = scrollY + 200;
+
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const sectionEl = document.getElementById(sections[i]);
+            if (sectionEl && sectionEl.offsetTop <= scrollPosition) {
+              if (activeSectionRef.current !== sections[i]) {
+                activeSectionRef.current = sections[i];
+                setActiveSection(sections[i]);
+              }
+              break;
+            }
+          }
+
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
@@ -68,8 +89,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
     <>
       {/* Top Scroll Progress Indicator */}
       <div 
-        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-primary-blue via-primary-cyan to-primary-violet z-50 transition-all duration-75 origin-left"
-        style={{ transform: `scaleX(${scrollProgress / 100})` }}
+        ref={progressBarRef}
+        className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-primary-blue via-primary-cyan to-primary-violet z-50 transition-transform duration-75 origin-left will-change-transform"
+        style={{ transform: 'scaleX(0)' }}
       />
 
       <header
