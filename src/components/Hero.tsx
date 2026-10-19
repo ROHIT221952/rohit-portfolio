@@ -43,7 +43,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             className="lg:col-span-7 flex flex-col items-start"
           >
             {/* Availability & Location Pills */}
-            <div className="flex flex-wrap items-center gap-2 mb-3">
+            <div className="flex flex-wrap items-center gap-2 mb-3 mt-2 sm:mt-2.5">
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-elevated/90 border border-primary-blue/30 text-[10px] sm:text-xs font-mono tracking-wide text-primary-cyan shadow-[0_0_15px_rgba(37,217,255,0.15)]">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
                 <span>{PERSONAL_INFO.availability}</span>
@@ -361,7 +361,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.85, duration: 0.6 }}
-              className="w-full max-w-[265px] sm:max-w-[285px] lg:max-w-[305px] xl:max-w-[315px] glass-panel-elevated p-2.5 sm:p-3 rounded-xl border border-border-subtle -mt-1 sm:-mt-2 shadow-lg z-20 relative"
+              className="w-full max-w-[265px] sm:max-w-[285px] lg:max-w-[305px] xl:max-w-[315px] glass-panel-elevated p-2.5 sm:p-3 rounded-xl border border-border-subtle mt-1.5 sm:mt-2 shadow-lg z-20 relative"
             >
               <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-border-subtle/70">
                 <span className="text-[9.5px] font-mono font-bold uppercase tracking-wider text-primary-cyan">
