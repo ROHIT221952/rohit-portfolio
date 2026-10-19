@@ -106,7 +106,7 @@ export const FloatingDock: React.FC<FloatingDockProps> = ({ onOpenResume }) => {
                 <span className="sr-only">View Resume</span>
                 {/* Tooltip */}
                 <span className="hidden sm:block absolute right-12 bg-[#080D1A] text-white text-[11px] font-mono py-1 px-2 rounded-md border border-border-subtle whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
-                  View Résumé
+                  View Resume
                 </span>
               </button>
             ) : (

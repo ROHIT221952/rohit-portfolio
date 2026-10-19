@@ -244,7 +244,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                     className="w-full text-center py-3 text-xs font-semibold tracking-wide text-primary-cyan bg-primary-blue/15 border border-primary-blue/40 rounded-xl flex items-center justify-center gap-2"
                   >
                     <Eye className="w-4 h-4" />
-                    <span>View Résumé Modal</span>
+                    <span>View Resume Modal</span>
                   </button>
                 )}
 
@@ -255,7 +255,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenResume }) => {
                   rel="noopener noreferrer"
                   className="w-full text-center py-3 text-xs font-semibold tracking-wide text-text-secondary hover:text-white bg-surface-elevated border border-border-subtle rounded-xl"
                 >
-                  Download Résumé (PDF)
+                  Download Resume (PDF)
                 </a>
               </div>
             </div>
